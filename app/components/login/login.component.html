@@ -1,0 +1,46 @@
+<!--
+<md-grid-list cols="1" rowHeight="2:1">
+  <md-grid-tile>
+-->
+    <div class="input-container">
+      <br/>
+      <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        <md-card class="mat-elevation-z20">
+          <md-card-title>
+            <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+              Login
+            </div>
+          </md-card-title>
+          <form [formGroup]="form">
+            <div formGroupName="name">
+              <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+                <div class="input-control">
+                  <md-input-container>
+                    <input formControlName="user" mdInput placeholder="User" id="user" value="" class="form-control" [(ngModel)]="user" name="user" [autofocus]>
+                  </md-input-container>
+                </div>
+                <div class="input-control">
+                  <md-input-container>
+                    <input formControlName="password" mdInput placeholder="Password" type="password" id="password" value="" class="form-control" [(ngModel)]="password" name="password">
+                  </md-input-container>
+                </div>
+                <br/>
+                <!--<md-card-actions> -->
+                <button md-raised-button [disabled]="form.status==='INVALID'" color="primary" i18n-mdTooltip mdTooltip="Login" mdTooltipPosition="below" (click)="login()" type="submit" class="input-control" i18n>Login</button>
+                <!-- </md-card-actions> -->
+              </div>
+            </div>
+            <br/>
+          </form>
+          <!--
+          <p>Value: {{ form.value | json }}</p>
+          <p>Validation status: {{ form.status }}</p>
+          -->
+        </md-card>
+      </div>
+    </div>
+  <!--</div>-->
+<!--
+  </md-grid-tile>
+</md-grid-list>
+-->
