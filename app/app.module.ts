@@ -23,12 +23,14 @@ import { LoginComponent } from './components/login/login.component';
 
   // App service modules
 import { LoginService } from "./services/login.service";
+import { MenuComponent } from './components/menu/menu.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    MenuComponent
   ],
   imports: [
       // Angular modules
