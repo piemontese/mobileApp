@@ -20,10 +20,17 @@
 </ul>
 -->
 
-<md-toolbar color="primary" class="mat-elevation-z5">
-  <img width="65" src="app/images/mobileApp.png" style="margin-top: 60px;"/>
+<md-toolbar color="primary" class="mat-elevation-z5 mat-typography">
+  <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center" 
+       style="width: 50px; height: 100%; margin-left: -10px; margin-top: -10px;">
+    <img width="100%" src="app/images/mobileApp.png" style="margin-top: 20px;"/>
+  </div>
+  <span style="margin-top: -15px; margin-left: 20px;">Nome Cognome</span>
 
   <md-toolbar-row>
+    <img width="65" src=""/>
+    <span>Sistema</span>
+
     <span class="right-spacer"></span>
     <button md-icon-button [mdMenuTriggerFor]="menu">
       <md-icon>view_headline</md-icon>
@@ -31,7 +38,7 @@
     <md-menu #menu="mdMenu">
       <button md-menu-item><md-icon>format_color_fill</md-icon>Tema</button>
       <button md-menu-item><md-icon>build</md-icon>Impostazioni</button>
-      <button md-menu-item><md-icon>person_outline</md-icon>Logout</button>
+      <button md-menu-item (click)="logout()"><md-icon>person_outline</md-icon>Logout</button>
     </md-menu>
   </md-toolbar-row>
 </md-toolbar>

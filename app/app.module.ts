@@ -24,13 +24,15 @@ import { LoginComponent } from './components/login/login.component';
   // App service modules
 import { LoginService } from "./services/login.service";
 import { MenuComponent } from './components/menu/menu.component';
+import { FormComponent } from './components/commons/form/form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MenuComponent
+    MenuComponent,
+    FormComponent
   ],
   imports: [
       // Angular modules

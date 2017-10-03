@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from "@angular/router";
 
 import { UserData } from '../data/user-data';
 
@@ -6,10 +7,10 @@ import { UserData } from '../data/user-data';
 export class LoginService {
   private data: UserData;
 
-  constructor() { }
+  constructor( private router: Router ) { }
   
   login( user: string, password: string ) { 
-    alert("login");
+    this.router.navigate(['menu']); 
   }
 
 }
