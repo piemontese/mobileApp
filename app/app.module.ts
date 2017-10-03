@@ -25,6 +25,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LoginService } from "./services/login.service";
 import { MenuComponent } from './components/menu/menu.component';
 import { FormComponent } from './components/commons/form/form.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { FormComponent } from './components/commons/form/form.component';
     AppComponent,
     LoginComponent,
     MenuComponent,
-    FormComponent
+    FormComponent,
+    SettingsComponent
   ],
   imports: [
       // Angular modules
