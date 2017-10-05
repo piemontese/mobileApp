@@ -40,8 +40,8 @@
       <md-icon>view_headline</md-icon>
     </button>
     <md-menu #menu="mdMenu">
-      <button md-menu-item><md-icon>format_color_fill</md-icon>Tema</button>
-      <button md-menu-item  [routerLink]="['/settings']" ><md-icon>build</md-icon>Impostazioni</button>
+      <button md-menu-item [routerLink]="['/themes']"><md-icon>format_color_fill</md-icon>Tema</button>
+      <button md-menu-item [routerLink]="['/settings']"><md-icon>build</md-icon>Impostazioni</button>
       <button md-menu-item (click)="loginService.logout()"><md-icon>person_outline</md-icon>Logout</button>
     </md-menu>
   </md-toolbar-row>

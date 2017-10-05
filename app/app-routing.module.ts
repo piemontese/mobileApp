@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { ThemesComponent } from './components/themes/themes.component';
 
 const routes: Routes = [  
   {
@@ -19,7 +20,11 @@ const routes: Routes = [
     children: []
   },
   {
-    path: 'settings', component:SettingsComponent,
+    path: 'settings', component: SettingsComponent,
+    children: []
+  },
+  {
+    path: 'themes', component: ThemesComponent,
     children: []
   },
 ];
