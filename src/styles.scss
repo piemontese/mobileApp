@@ -41,7 +41,11 @@ $config: mat-typography-config();
 }
 
 
-
+html, body { 
+  margin:0; 
+  padding:0; 
+  height:100%; 
+}
 
 .right-spacer {
   // This fills the remaining space, by using flexbox. 
@@ -49,4 +53,9 @@ $config: mat-typography-config();
   flex: 1 1 auto;
 }
 
+.large-button {
+  font-size: 16px;
+  height: 50px !important;
+  min-height: 40px !important;
+}
 

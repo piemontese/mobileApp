@@ -20,12 +20,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
-
-  // App service modules
-import { LoginService } from "./services/login.service";
 import { MenuComponent } from './components/menu/menu.component';
 import { FormComponent } from './components/commons/form/form.component';
 import { SettingsComponent } from './components/settings/settings.component';
+
+  // App service modules
+import { LoginService } from "./services/login.service";
+import { MenuService } from "./services/menu.service";
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { SettingsComponent } from './components/settings/settings.component';
     AppRoutingModule,
   ],
   providers: [
-    LoginService
+    LoginService,
+    MenuService
   ],
   bootstrap: [AppComponent]
 })
