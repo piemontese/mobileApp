@@ -5,13 +5,14 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
   // Material modules
-import { MdToolbarModule } from '@angular/material';
-import { MdIconModule } from '@angular/material';
-import { MdButtonModule } from '@angular/material';
-import { MdMenuModule } from '@angular/material';
-import { MdCardModule } from '@angular/material';
-import { MdInputModule } from '@angular/material';
-import { MdGridListModule } from '@angular/material';
+import { MatToolbarModule } from '@angular/material';
+import { MatIconModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material';
+import { MatMenuModule } from '@angular/material';
+import { MatCardModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+import { MatGridListModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material';
 
   // Thirdy part modules
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -23,6 +24,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FormComponent } from './components/commons/form/form.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { ThemesComponent } from './components/themes/themes.component';
 
   // App service modules
 import { LoginService } from "./services/login.service";
@@ -35,7 +37,8 @@ import { MenuService } from "./services/menu.service";
     LoginComponent,
     MenuComponent,
     FormComponent,
-    SettingsComponent
+    SettingsComponent,
+    ThemesComponent
   ],
   imports: [
       // Angular modules
@@ -43,13 +46,14 @@ import { MenuService } from "./services/menu.service";
     BrowserAnimationsModule,
     ReactiveFormsModule,
       // Material modules
-    MdToolbarModule,
-    MdIconModule,
-    MdButtonModule,
-    MdMenuModule,
-    MdCardModule,
-    MdInputModule,
-    MdGridListModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatCardModule,
+    MatInputModule,
+    MatGridListModule,
+    MatSelectModule,
       // Thirdy part modules
     FlexLayoutModule,
       // App modules
