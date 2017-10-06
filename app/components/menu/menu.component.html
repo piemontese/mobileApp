@@ -1,36 +1,59 @@
 <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
-  <button md-raised-button 
+  <button mat-raised-button 
           class="full-width menu-button"
           *ngIf="menuService.parent===''">Menu</button>
   
-  <button md-raised-button 
+  <button mat-raised-button 
           class="full-width menu-button"
           *ngIf="menuService.parent!==''"
           (click)="menuService.goToPrevMenu()">
-    <md-icon>keyboard_backspacer</md-icon>{{menuService.currentItem.description}}</button>
+    <mat-icon>keyboard_backspacer</mat-icon>{{menuService.currentItem.description}}</button>
 
   <div class="full-width"
        *ngFor="let item of menuService.getCurrentMenu(); let i=index;">
-    <button md-raised-button 
+    <button mat-raised-button 
             color="primary" 
             class="full-width menu-button"
             (click)="menuService.goToNextMenu(item)">{{item.description}}</button>
   </div>
 </div>
 
-
-
-
-<br/>
 <div class="full-height"
      *ngIf="menuService.currentAction && menuService.parent !== ''">
   <div fxFlexFill  fxLayout="column" fxLayoutAlign="center center">
-    <md-card class="mat-elevation-z5">
-      <md-card-title>
-        <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
-          {{menuService.currentAction.description}}
-        </div>
-      </md-card-title>
-    </md-card>
+    <mat-card class="action-card mat-elevation-z5">
+<!--      <mat-card-header color="primary" fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">-->
+        <mat-card-title class="action-card-title">
+          <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+            {{menuService.currentAction.title}}
+          </div>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+            {{menuService.currentAction.subTitle}}
+          </div>
+        </mat-card-subtitle>
+        <hr class="full-width">
+<!--      </mat-card-header>-->
+      <mat-card-content fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        <mat-form-field>
+          <input matInput placeholder="Input">
+        </mat-form-field>
+
+        <mat-form-field>
+          <textarea matInput placeholder="Textarea"></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select placeholder="Select">
+            <mat-option value="option">Option</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions fxLayout="row" fxLayout.xs="row" fxLayoutAlign="center center">
+        <button mat-button>OK</button>
+        <button mat-button>Cancel</button>
+      </mat-card-actions>      
+    </mat-card>
   </div>
 </div>

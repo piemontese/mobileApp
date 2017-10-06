@@ -20,31 +20,31 @@
 </ul>
 -->
 
-<md-toolbar color="primary" class="mat-elevation-z5 mat-typography">
+<mat-toolbar color="primary" class="mat-elevation-z5 mat-typography">
 <!--
   <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center" 
        style="width: 50px; height: 100%; margin-left: -10px; margin-top: -10px;">
 -->
-    <img width="65" src="app/images/mobileApp.png" style="margin-top: 20px; margin-left: 0px;"/>
+    <img width="65" src="app/images/mobileApp.png" style="margin-top: 15px; margin-left: -10px;"/>
 <!--
   </div>
 -->
   <span style="margin-top: -15px;" *ngIf="loginService.isLogged()">Nome Cognome</span>
 
-  <md-toolbar-row>
-    <img width="65" src=""/>
+  <mat-toolbar-row>
+    <img width="65" src="" style="margin-left: -10px;"/>
     <span *ngIf="loginService.isLogged()">Sistema</span>
 
     <span class="right-spacer"></span>
-    <button md-icon-button [mdMenuTriggerFor]="menu" *ngIf="loginService.isLogged()">
-      <md-icon>view_headline</md-icon>
+    <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="loginService.isLogged()">
+      <mat-icon>view_headline</mat-icon>
     </button>
-    <md-menu #menu="mdMenu">
-      <button md-menu-item [routerLink]="['/themes']"><md-icon>format_color_fill</md-icon>Tema</button>
-      <button md-menu-item [routerLink]="['/settings']"><md-icon>build</md-icon>Impostazioni</button>
-      <button md-menu-item (click)="loginService.logout()"><md-icon>person_outline</md-icon>Logout</button>
-    </md-menu>
-  </md-toolbar-row>
-</md-toolbar>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['/themes']"><mat-icon>format_color_fill</mat-icon>Tema</button>
+      <button mat-menu-item [routerLink]="['/settings']"><mat-icon>build</mat-icon>Impostazioni</button>
+      <button mat-menu-item (click)="loginService.logout()"><mat-icon>person_outline</mat-icon>Logout</button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
 
 <router-outlet></router-outlet>

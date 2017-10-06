@@ -1,28 +1,28 @@
     <div class="full-height">
-      <div fxFlexFill  fxLayout="column" fxLayoutAlign="center center">
-        <md-card class="mat-elevation-z5">
-          <md-card-title>
+      <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
+        <mat-card class="mat-elevation-z5">
+          <mat-card-title>
             <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
               Login
             </div>
-          </md-card-title>
+          </mat-card-title>
           <form [formGroup]="form">
             <div formGroupName="name">
               <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
                 <div class="input-control">
-                  <md-input-container>
-                    <input formControlName="user" mdInput placeholder="User" id="user" value="" class="form-control" [(ngModel)]="user" name="user" [autofocus]>
-                  </md-input-container>
+                  <mat-input-container>
+                    <input formControlName="user" matInput placeholder="User" id="user" value="" class="form-control" [(ngModel)]="user" name="user" [autofocus]>
+                  </mat-input-container>
                 </div>
                 <div class="input-control">
-                  <md-input-container>
-                    <input formControlName="password" mdInput placeholder="Password" type="password" id="password" value="" class="form-control" [(ngModel)]="password" name="password">
-                  </md-input-container>
+                  <mat-input-container>
+                    <input formControlName="password" matInput placeholder="Password" type="password" id="password" value="" class="form-control" [(ngModel)]="password" name="password">
+                  </mat-input-container>
                 </div>
                 <br/>
-                <!--<md-card-actions> -->
-                <button md-raised-button [disabled]="form.status==='INVALID'" color="primary" i18n-mdTooltip mdTooltip="Login" mdTooltipPosition="below" (click)="login()" type="submit" class="input-control" i18n>Login</button>
-                <!-- </md-card-actions> -->
+                <!--<mat-card-actions> -->
+                <button mat-raised-button [disabled]="form.status==='INVALID'" color="primary" i18n-mdTooltip mdTooltip="Login" mdTooltipPosition="below" (click)="login()" type="submit" class="input-control" i18n>Login</button>
+                <!-- </mat-card-actions> -->
               </div>
             </div>
             <br/>
@@ -34,6 +34,6 @@
           <p>Value: {{ form.value | json }}</p>
           <p>Validation status: {{ form.status }}</p>
           -->
-        </md-card>
+        </mat-card>
       </div>
     </div>
