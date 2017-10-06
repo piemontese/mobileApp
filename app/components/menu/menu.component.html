@@ -1,29 +1,36 @@
-<!--
-<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
-  <button md-raised-button class="full-width large-button">Menu</button>
-  <button md-raised-button color="primary" class="full-width large-button">Item 1</button>
-  <button md-raised-button color="primary" class="full-width large-button">Item 2</button>
-  <button md-raised-button color="primary" class="full-width large-button">Item 3</button>
-  <button md-raised-button color="primary" class="full-width large-button">Item 4</button>
-</div>
--->
-
 <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
   <button md-raised-button 
-          class="full-width large-button"
+          class="full-width menu-button"
           *ngIf="menuService.parent===''">Menu</button>
   
   <button md-raised-button 
-          class="full-width large-button"
+          class="full-width menu-button"
           *ngIf="menuService.parent!==''"
-          (click)="menuService.goToPrevtMenu()">
+          (click)="menuService.goToPrevMenu()">
     <md-icon>keyboard_backspacer</md-icon>{{menuService.currentItem.description}}</button>
 
   <div class="full-width"
        *ngFor="let item of menuService.getCurrentMenu(); let i=index;">
     <button md-raised-button 
             color="primary" 
-            class="full-width large-button"
+            class="full-width menu-button"
             (click)="menuService.goToNextMenu(item)">{{item.description}}</button>
+  </div>
+</div>
+
+
+
+
+<br/>
+<div class="full-height"
+     *ngIf="menuService.currentAction && menuService.parent !== ''">
+  <div fxFlexFill  fxLayout="column" fxLayoutAlign="center center">
+    <md-card class="mat-elevation-z5">
+      <md-card-title>
+        <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+          {{menuService.currentAction.description}}
+        </div>
+      </md-card-title>
+    </md-card>
   </div>
 </div>
