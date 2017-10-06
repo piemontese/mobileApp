@@ -12,8 +12,20 @@ interface MenuAction {
   parent: string;
   item: string;
   title: string;
-  subTitle: string;
   method: string;
+};
+
+interface MethodField { 
+  name: string;
+  type: string;
+  obligatory: boolean;
+  minWidth: number;
+  maxWidth: number;
+};
+
+interface ActionMethod { 
+  action: string;
+  fields: MethodField[];
 };
 
 @Injectable()
@@ -32,14 +44,15 @@ export class MenuService {
     { parent: "item_1_1", item: "item_1_1_1", description: "Item 1 1 1", action: "item_1_1_1_1", visible: false },
   ];
   actions: MenuAction[] = [
-    { parent: "item_1_1_1", item: "action_1_1_1", title: "Action 1 1 1", subTitle: "Do Action 1 1 1", method: "Z_METHOD_1_1_1" },
-    { parent: "item_1_2", item: "action_1_2", title: "Action 1 2", subTitle: "Do Action 1 2", method: "Z_METHOD_1_2" },
-    { parent: "item_1_3", item: "action_1_3", title: "Action 1 3", subTitle: "Do Action 1 3", method: "Z_METHOD_1_3" },
-    { parent: "item_2_1", item: "action_2_1", title: "Action 2 1", subTitle: "Do Action 2 1", method: "Z_METHOD_2_1" },
-    { parent: "item_3", item: "action_3", title: "Action 3", subTitle: "Do Action 3", method: "Z_METHOD_3" },
-    { parent: "item_4", item: "action_4", title: "Action 4", subTitle: "Do Action 4", method: "Z_METHOD_4" },
-    { parent: "item_5", item: "action_5", title: "Action 5", subTitle: "Do Action 5", method: "Z_METHOD_5" },
+    { parent: "item_1_1_1", item: "action_1_1_1", title: "Action 1 1 1", method: "Z_METHOD_1_1_1" },
+    { parent: "item_1_2", item: "action_1_2", title: "Action 1 2", method: "Z_METHOD_1_2" },
+    { parent: "item_1_3", item: "action_1_3", title: "Action 1 3", method: "Z_METHOD_1_3" },
+    { parent: "item_2_1", item: "action_2_1", title: "Action 2 1", method: "Z_METHOD_2_1" },
+    { parent: "item_3", item: "action_3", title: "Action 3", method: "Z_METHOD_3" },
+    { parent: "item_4", item: "action_4", title: "Action 4", method: "Z_METHOD_4" },
+    { parent: "item_5", item: "action_5", title: "Action 5", method: "Z_METHOD_5" },
   ];
+  methods: ActionMethod[];
   currentItem: MenuItem = null;
   currentAction: MenuAction = null;
   
