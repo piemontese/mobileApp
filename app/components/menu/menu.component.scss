@@ -5,14 +5,15 @@
 }
 
 .full-height { 
-  margin-top: -60px;
-  height:100%; 
+  margin-top: 10px;
+  height: 80%; 
   flex: auto;
 }
 
 .action-card {
-  min-width: 80%;
-  min-height: 50%;
+  min-width: 90%;
+  max-width: 90%;
+  min-height: 80%;
   max-height: 80%;
 }
 

@@ -1,5 +1,18 @@
 import { Injectable } from '@angular/core';
 
+enum FieldType {  
+   email = 1,
+   password,
+   textbox,
+   chechbox,
+   textarea,
+   datepicker,
+   select,
+   sapSelectOptions,
+   table,
+   autocomplete
+};
+
 interface MenuItem { 
   parent: string;
   item: string;
@@ -17,8 +30,12 @@ interface MenuAction {
 
 interface MethodField { 
   name: string;
-  type: string;
+  description: string;
+  type: FieldType;
   obligatory: boolean;
+  default: any; //valore da proporre
+  length: number;
+  data: Array<any>; //elenco ad es. autocostruzione  
   minWidth: number;
   maxWidth: number;
 };
