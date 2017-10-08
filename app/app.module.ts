@@ -13,6 +13,7 @@ import { MatCardModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { MatGridListModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material';
+import { MatStepperModule } from '@angular/material';
 
   // Thirdy part modules
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -54,6 +55,7 @@ import { MenuService } from "./services/menu.service";
     MatInputModule,
     MatGridListModule,
     MatSelectModule,
+    MatStepperModule,
       // Thirdy part modules
     FlexLayoutModule,
       // App modules
