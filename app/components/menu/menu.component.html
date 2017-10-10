@@ -30,7 +30,7 @@
         </mat-card-title>
 <!--      </mat-card-header>-->
       <mat-card-content fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
-        <mat-horizontal-stepper [linear]="isLinear" *ngIf="menuService.currentMethod.steps">
+        <mat-horizontal-stepper [linear]="isLinear">
           <div *ngFor="let step of menuService.currentMethod.steps; let i=index;">
             <mat-step [stepControl]="step">
               <div fxLayout="column" 
@@ -42,43 +42,21 @@
                                 [field]="field"></app-form-field>
                 
               </div>
-              <div>
+              <br/>
+              <div *ngIf="i > 0">
+                <button mat-button matStepperPrevious>Back</button>
+              </div>
+              <div *ngIf="i < menuService.currentSteps-1">
                 <button mat-button matStepperNext>Next</button>
+              </div>
+              <div *ngIf="i === menuService.currentSteps-1">
+                <span class="right-spacer"></span>
+                <button mat-raised-button color="primary" (click)="menuService.goToPrevMenu()">OK</button>
               </div>
             </mat-step>
           </div>
-
-                
-<!--
-          <mat-step [stepControl]="firstFormGroup">
-            <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
-              <mat-form-field hintLabel="Min 10, Max 40 characters">
-                <input matInput #material minlength="10" maxlength="40"  placeholder="Material *">
-                <mat-hint align="end">{{material.value?.length || 10}}/40</mat-hint>
-                <mat-error *ngIf="material.value?.length < 10">Material length must be greater than 10</mat-error>
-              </mat-form-field>
-              <mat-form-field>
-                <mat-select placeholder="Plant *">
-                  <mat-option value="option">1000</mat-option>
-                  <mat-option value="option">2000</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-          </mat-step>
-          <mat-step [stepControl]="secondFormGroup">
-            <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
-              <mat-form-field>
-                <textarea matInput placeholder="Note"></textarea>
-              </mat-form-field>
-            </div>
-          </mat-step>
--->
         </mat-horizontal-stepper>
 
-        <div *ngIf="!menuService.currentMethod.steps.length">
-          <app-form-field *ngFor="let field of menuService.currentMethod.fields"
-                          [field]="field"></app-form-field>
-        </div>
       </mat-card-content>
 <!--
       <mat-card-actions fxLayout="row" fxLayout.xs="row" fxLayoutAlign="center center">

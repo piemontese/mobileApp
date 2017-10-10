@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { FieldType } from '../field-type.enum';
 import { MethodField } from '../method-field';
@@ -12,7 +13,7 @@ export class FormFieldComponent implements OnInit {
   @Input() field : MethodField;
   fieldType = FieldType;
   
-  constructor() { 
+  constructor( private router: Router ) { 
   }
 
   ngOnInit() {

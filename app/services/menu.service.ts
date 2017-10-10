@@ -81,6 +81,12 @@ export class MenuService {
     { parent: "item_5", item: "action_5", title: "Action 5", method: "Z_METHOD_5" },
   ];
   methods: MethodAction[] = [
+    { method: "Z_METHOD_1_1_1", fields: [
+        { field: "plant", description: "Plant", type: FieldType.select, obligatory: true, value: "1000", length: 4, data: [ "1000", "2000", "3000"], minWidth: 0, maxWidth: 4, step: 1 },
+        { field: "storageLoc", description: "Storage location", type: FieldType.select, obligatory: true, value: "1000", length: 4, data: [ "1000", "2000", "3000", "4000"], minWidth: 0, maxWidth: 4, step: 1 },
+      ], 
+      steps: [{ step: "1" }],
+    },
     { method: "Z_METHOD_3", fields: [
         { field: "material", description: "Material", type: FieldType.textbox, obligatory: true, value: "100-001", length: 18, data: null, minWidth: 0, maxWidth: 18, step: 1 },
         { field: "plant", description: "Plant", type: FieldType.select, obligatory: true, value: "1000", length: 4, data: [ "1000", "2000", "3000"], minWidth: 0, maxWidth: 4, step: 1 },
@@ -89,14 +95,15 @@ export class MenuService {
       steps: [{ step: "1" }, { step: "2" }],
     },
     { method: "Z_METHOD_4", fields: [
-        { field: "material", description: "Material", type: FieldType.textbox, obligatory: true, value: "100-001", length: 18, data: null, minWidth: 0, maxWidth: 18, step: 0 },
+        { field: "material", description: "Material", type: FieldType.textbox, obligatory: true, value: "100-001", length: 18, data: null, minWidth: 0, maxWidth: 18, step: 1 },
       ], 
-      steps: [],
+      steps: [{ step: "1" }],
     },
   ];
   currentItem: MenuItem = null;
   currentAction: MenuAction = null;
   currentMethod: MethodAction = null;
+  currentSteps: number = 0;
 
   constructor() { }
   
@@ -131,10 +138,13 @@ export class MenuService {
 
   getCurrentMehod() { 
     this.currentMethod = null;
+    this.currentSteps = 0;
     if ( this.currentAction ) { 
       for( let i = 0; i < this.methods.length; i++ ) { 
         if ( this.currentAction.method === this.methods[i].method ) { 
           this.currentMethod = this.methods[i];
+          for( let i = 0; i < this.currentMethod.steps.length; i++ )
+            this.currentSteps++;
           break;
         }
       }
