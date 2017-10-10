@@ -1,0 +1,60 @@
+<div *ngIf="field.step">
+  <mat-form-field hintLabel="Min 10, Max 40 characters"
+                  *ngIf="field.type===fieldType.textbox">
+    <input class="field"
+           matInput 
+           #material 
+           name="{{field.field}}"
+           value={{field.value}}
+           minlength="10" 
+           maxlength="18" 
+           placeholder={{field.description}}
+           required>
+    <mat-hint align="end">{{material.value?.length || 0}}/{{field.maxWidth}}</mat-hint>
+    <mat-error *ngIf="material.value?.length < 10">Material length must be greater than 10</mat-error>
+  </mat-form-field>
+
+  <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+    <mat-form-field *ngIf="field.type===fieldType.textarea">
+      <textarea matInput placeholder={{field.description}}></textarea>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field *ngIf="field.type===fieldType.select">
+    <mat-select placeholder={{field.description}}
+                value={{field.value}}>
+      <mat-option *ngFor="let data of field.data" [value]="data">{{data}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center"
+     *ngIf="!field.step">
+  <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center"
+       *ngIf="field.type===fieldType.textbox">
+    <input class="field"
+           matInput 
+           #material2 
+           name="{{field.field}}"
+           value={{field.value}}
+           minlength="10" 
+           maxlength="18" 
+           placeholder={{field.description}}
+           required>
+    <mat-hint align="end">{{material2.value?.length || 0}}/{{field.maxWidth}}</mat-hint>
+    <mat-error *ngIf="material2.value?.length < 10">Material length must be greater than 10</mat-error>
+  </div>
+  
+  <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center"
+       *ngIf="field.type===fieldType.textarea">
+    <textarea matInput placeholder={{field.description}}></textarea>
+  </div>
+
+  <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center"
+       *ngIf="field.type===fieldType.select">
+    <mat-select placeholder={{field.description}}
+                value={{field.value}}>
+      <mat-option *ngFor="let data of field.data" [value]="data">{{data}}</mat-option>
+    </mat-select>
+  </div>
+</div>

@@ -30,6 +30,7 @@ import { ThemesComponent } from './components/themes/themes.component';
   // App service modules
 import { LoginService } from "./services/login.service";
 import { MenuService } from "./services/menu.service";
+import { FormFieldComponent } from './components/commons/form-field/form-field.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { MenuService } from "./services/menu.service";
     MenuComponent,
     FormComponent,
     SettingsComponent,
-    ThemesComponent
+    ThemesComponent,
+    FormFieldComponent
   ],
   imports: [
       // Angular modules
@@ -64,6 +66,7 @@ import { MenuService } from "./services/menu.service";
   providers: [
     LoginService,
     MenuService
+//    { provide: MethodField, useValue: null }
   ],
   bootstrap: [AppComponent]
 })

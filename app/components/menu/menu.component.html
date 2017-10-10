@@ -10,7 +10,7 @@
     <mat-icon>keyboard_backspacer</mat-icon>{{menuService.currentItem.description}}</button>
 
   <div class="full-width"
-       *ngFor="let item of menuService.getCurrentMenu(); let i=index;">
+       *ngFor="let item of menuService.getCurrentMenu()">
     <button mat-raised-button 
             color="primary" 
             class="full-width menu-button"
@@ -19,7 +19,7 @@
 </div>
 
 <div class="full-height"
-     *ngIf="menuService.currentAction && menuService.parent !== ''">
+     *ngIf="menuService.currentAction && menuService.parent !== '' && menuService.currentMethod">
   <div fxFlexFill  fxLayout="column" fxLayoutAlign="center center">
     <mat-card class="action-card mat-elevation-z5">
 <!--      <mat-card-header color="primary" fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">-->
@@ -30,33 +30,62 @@
         </mat-card-title>
 <!--      </mat-card-header>-->
       <mat-card-content fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
-        <mat-horizontal-stepper [linear]="isLinear">
+        <mat-horizontal-stepper [linear]="isLinear" *ngIf="menuService.currentMethod.steps">
+          <div *ngFor="let step of menuService.currentMethod.steps; let i=index;">
+            <mat-step [stepControl]="step">
+              <div fxLayout="column" 
+                   fxLayout.xs="column" 
+                   fxLayoutAlign="center center"
+                   *ngFor="let field of menuService.currentMethod.fields">
+                
+                <app-form-field *ngIf="field.step===i+1"
+                                [field]="field"></app-form-field>
+                
+              </div>
+              <div>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </mat-step>
+          </div>
+
+                
+<!--
           <mat-step [stepControl]="firstFormGroup">
             <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
-            <mat-form-field hintLabel="Min 10, Max 40 characters">
-              <input matInput #material minlength="10" maxlength="40"  placeholder="Material *">
-              <mat-hint align="end">{{material.value?.length || 10}}/40</mat-hint>
-              <mat-error *ngIf="material.value?.length < 10">Material length must be greater than 10</mat-error>
-            </mat-form-field>
-            <mat-form-field>
-              <mat-select placeholder="Plant *">
-                <mat-option value="option">1000</mat-option>
-                <mat-option value="option">2000</mat-option>
-              </mat-select>
-            </mat-form-field>
+              <mat-form-field hintLabel="Min 10, Max 40 characters">
+                <input matInput #material minlength="10" maxlength="40"  placeholder="Material *">
+                <mat-hint align="end">{{material.value?.length || 10}}/40</mat-hint>
+                <mat-error *ngIf="material.value?.length < 10">Material length must be greater than 10</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Plant *">
+                  <mat-option value="option">1000</mat-option>
+                  <mat-option value="option">2000</mat-option>
+                </mat-select>
+              </mat-form-field>
             </div>
           </mat-step>
           <mat-step [stepControl]="secondFormGroup">
-            <mat-form-field>
-              <textarea matInput placeholder="Note"></textarea>
-            </mat-form-field>
+            <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+              <mat-form-field>
+                <textarea matInput placeholder="Note"></textarea>
+              </mat-form-field>
+            </div>
           </mat-step>
+-->
         </mat-horizontal-stepper>
+
+        <div *ngIf="!menuService.currentMethod.steps.length">
+          <app-form-field *ngFor="let field of menuService.currentMethod.fields"
+                          [field]="field"></app-form-field>
+        </div>
       </mat-card-content>
+<!--
       <mat-card-actions fxLayout="row" fxLayout.xs="row" fxLayoutAlign="center center">
         <button mat-button>OK</button>
         <button mat-button>Cancel</button>
       </mat-card-actions>      
+-->
     </mat-card>
   </div>
 </div>

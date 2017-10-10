@@ -1,19 +1,23 @@
 import { Injectable } from '@angular/core';
 
-enum FieldType {  
-   email = 1,
-   password,
-   textbox,
-   chechbox,
-   textarea,
-   datepicker,
-   select,
-   sapSelectOptions,
-   table,
-   autocomplete
-};
+import { FieldType } from '../components/commons/field-type.enum';
+import { MethodField } from '../components/commons/method-field';
 
-interface MenuItem { 
+/*
+export enum FieldType {  
+   email = 1,
+   password = 2,
+   textbox = 3,
+   chechbox = 4,
+   textarea = 5,
+   datepicker = 6,
+   select = 7,
+   sapSelectOptions = 8,
+   table = 9,
+   autocomplete = 10
+};
+*/
+export interface MenuItem { 
   parent: string;
   item: string;
   description: string;
@@ -21,32 +25,39 @@ interface MenuItem {
   visible: boolean;
 };
 
-interface MenuAction { 
+export interface MenuAction { 
   parent: string;
   item: string;
   title: string;
   method: string;
 };
-
-interface MethodField { 
-  name: string;
+/*
+export interface MethodField { 
+  field: string;
   description: string;
   type: FieldType;
   obligatory: boolean;
-  default: any; //valore da proporre
+  value: any; //valore da proporre
   length: number;
   data: Array<any>; //elenco ad es. autocostruzione  
   minWidth: number;
   maxWidth: number;
+  step: number;
 };
-
-interface ActionMethod { 
-  action: string;
+*/
+export interface Steps {
+  step: string;
+};
+  
+export interface MethodAction { 
+  method: string;
   fields: MethodField[];
+  steps: Steps[]; //per mat-stepper
 };
 
 @Injectable()
 export class MenuService {
+  fieldType: FieldType;
   parent: string = "";
   menu: MenuItem[] = [
     { parent: "", item: "item_1", description: "Item 1", action: "item_1_1", visible: false },
@@ -69,32 +80,44 @@ export class MenuService {
     { parent: "item_4", item: "action_4", title: "Action 4", method: "Z_METHOD_4" },
     { parent: "item_5", item: "action_5", title: "Action 5", method: "Z_METHOD_5" },
   ];
-  methods: ActionMethod[];
+  methods: MethodAction[] = [
+    { method: "Z_METHOD_3", fields: [
+        { field: "material", description: "Material", type: FieldType.textbox, obligatory: true, value: "100-001", length: 18, data: null, minWidth: 0, maxWidth: 18, step: 1 },
+        { field: "plant", description: "Plant", type: FieldType.select, obligatory: true, value: "1000", length: 4, data: [ "1000", "2000", "3000"], minWidth: 0, maxWidth: 4, step: 1 },
+        { field: "note", description: "Note", type: FieldType.textarea, obligatory: false, value: "", length: 200, data: null, minWidth: 0, maxWidth: 1000, step: 2 },
+      ], 
+      steps: [{ step: "1" }, { step: "2" }],
+    },
+    { method: "Z_METHOD_4", fields: [
+        { field: "material", description: "Material", type: FieldType.textbox, obligatory: true, value: "100-001", length: 18, data: null, minWidth: 0, maxWidth: 18, step: 0 },
+      ], 
+      steps: [],
+    },
+  ];
   currentItem: MenuItem = null;
   currentAction: MenuAction = null;
-  
+  currentMethod: MethodAction = null;
+
   constructor() { }
   
-  getCurrentMenu() : Array<any>
-  {
+  getCurrentMenu() : Array<any> {
     let res = [];
     for( let i = 0; i < this.menu.length; i++ ) { 
       if ( this.menu[i].parent === this.parent )
         res.push( this.menu[i] );
     }
-    this.getAction();
+    this.getCurrentAction();
+    this.getCurrentMehod();
     return res;
   }
   
-  goToNextMenu( currItem: MenuItem ) 
-  { 
+  goToNextMenu( currItem: MenuItem ) { 
     this.parent = currItem.item; 
     this.currentItem = currItem;
     this.getCurrentMenu();
   }
 
-  getAction()
-  { 
+  getCurrentAction() { 
     this.currentAction = null;
     if ( this.currentItem ) { 
       for( let i = 0; i < this.actions.length; i++ ) { 
@@ -106,8 +129,19 @@ export class MenuService {
     }
   }
 
-  goToPrevMenu() 
-  { 
+  getCurrentMehod() { 
+    this.currentMethod = null;
+    if ( this.currentAction ) { 
+      for( let i = 0; i < this.methods.length; i++ ) { 
+        if ( this.currentAction.method === this.methods[i].method ) { 
+          this.currentMethod = this.methods[i];
+          break;
+        }
+      }
+    }
+  }
+
+  goToPrevMenu() { 
     for( let i = 0; i < this.menu.length; i++ ) { 
       if ( this.menu[i].item === this.parent ) {  
         this.parent = this.menu[i].parent;
