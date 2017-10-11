@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { FieldType } from '../components/commons/field-type.enum';
-import { MethodField } from '../components/commons/method-field';
+import { FieldType } from '../data/field-type.enum';
+import { MethodField } from '../data/method-field';
 
 /*
 export enum FieldType {  

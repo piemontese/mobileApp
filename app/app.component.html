@@ -29,11 +29,11 @@
 <!--
   </div>
 -->
-  <span style="margin-top: -15px;" *ngIf="loginService.isLogged()">Nome Cognome</span>
+  <span style="margin-top: -15px; margin-left: 10px;" *ngIf="loginService.isLogged()">Nome Cognome</span>
 
   <mat-toolbar-row>
     <img width="65" src="" style="margin-left: -10px;"/>
-    <span *ngIf="loginService.isLogged()">Sistema</span>
+    <span *ngIf="loginService.isLogged()" style="margin-top: -5px; margin-left: 10px;">Sistema</span>
 
     <span class="right-spacer"></span>
     <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="loginService.isLogged()">
