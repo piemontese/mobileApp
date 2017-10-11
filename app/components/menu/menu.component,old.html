@@ -21,9 +21,15 @@
 <div class="full-height"
      *ngIf="menuService.currentAction && menuService.parent !== '' && menuService.currentMethod">
   <div fxFlexFill  fxLayout="column" fxLayoutAlign="center center">
-    <div  class="action-card-title" fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
+    <mat-card class="action-card mat-elevation-z5">
+<!--      <mat-card-header color="primary" fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">-->
+        <mat-card-title class="action-card-title">
+          <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
             {{menuService.currentAction.title}}
-    </div>
+          </div>
+        </mat-card-title>
+<!--      </mat-card-header>-->
+      <mat-card-content fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
         <mat-horizontal-stepper [linear]="isLinear">
           <div *ngFor="let step of menuService.currentMethod.steps; let i=index;">
             <mat-step [stepControl]="step">
@@ -51,5 +57,13 @@
           </div>
         </mat-horizontal-stepper>
 
+      </mat-card-content>
+<!--
+      <mat-card-actions fxLayout="row" fxLayout.xs="row" fxLayoutAlign="center center">
+        <button mat-button>OK</button>
+        <button mat-button>Cancel</button>
+      </mat-card-actions>      
+-->
+    </mat-card>
   </div>
 </div>

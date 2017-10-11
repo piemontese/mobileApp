@@ -15,12 +15,14 @@
 
 <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
   <mat-form-field *ngIf="field.type===fieldType.textarea">
-    <textarea matInput placeholder={{field.description}}></textarea>
+    <textarea class="field"
+              matInput placeholder={{field.description}}></textarea>
   </mat-form-field>
 </div>
 
 <mat-form-field *ngIf="field.type===fieldType.select">
-  <mat-select placeholder={{field.description}}
+  <mat-select class="field"
+              placeholder={{field.description}}
               value={{field.value}}>
     <mat-option *ngFor="let data of field.data" [value]="data">{{data}}</mat-option>
   </mat-select>
