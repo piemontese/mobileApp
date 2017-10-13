@@ -14,8 +14,10 @@
     <span *ngIf="loginService.isLogged()" style="margin-top: -5px; margin-left: 10px;">Sistema</span>
 
     <span class="right-spacer"></span>
+<!--
     <button mat-icon-button tooltip="Toggle Fullscreen" tooltipPosition="left" appFullscreen>
       <mat-icon>fullscreen</mat-icon></button>
+-->
     <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="loginService.isLogged()">
       <mat-icon>view_headline</mat-icon></button>
     <mat-menu #menu="matMenu">
