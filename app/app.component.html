@@ -21,9 +21,16 @@
     <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="loginService.isLogged()">
       <mat-icon>view_headline</mat-icon></button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item [routerLink]="['/themes']"><mat-icon>format_color_fill</mat-icon>Tema</button>
-      <button mat-menu-item [routerLink]="['/settings']"><mat-icon>build</mat-icon>Impostazioni</button>
-      <button mat-menu-item (click)="loginService.logout()"><mat-icon>person_outline</mat-icon>Logout</button>
+      <button mat-menu-item 
+              [routerLink]="['/themes']">
+        <mat-icon>format_color_fill</mat-icon>Tema</button>
+      <button mat-menu-item 
+              [routerLink]="['/settings']">
+        <mat-icon>build</mat-icon>Impostazioni</button>
+      <button mat-menu-item 
+              (click)="loginService.logout()"
+              appFullscreen>
+        <mat-icon>person_outline</mat-icon>Logout</button>
     </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>
