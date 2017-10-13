@@ -15,8 +15,10 @@ import { MatGridListModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material';
 import { MatStepperModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material';
+import { MatTooltipModule } from '@angular/material';
 
   // Thirdy part modules
+import 'hammerjs';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
   // App modules
@@ -34,6 +36,7 @@ import { DialogComponent } from './components/commons/dialog/dialog.component';
 import { LoginService } from "./services/login.service";
 import { MenuService } from "./services/menu.service";
 import { DialogService } from "./services/dialog.service";
+import { FullscreenDirective } from './directives/fullscreen.directive';
 
 
 @NgModule({
@@ -46,6 +49,7 @@ import { DialogService } from "./services/dialog.service";
     ThemesComponent,
     FormFieldComponent,
     DialogComponent,
+    FullscreenDirective,
   ],
   imports: [
       // Angular modules
@@ -63,6 +67,7 @@ import { DialogService } from "./services/dialog.service";
     MatSelectModule,
     MatStepperModule,
     MatDialogModule,
+    MatTooltipModule,
       // Thirdy part modules
     FlexLayoutModule,
       // App modules

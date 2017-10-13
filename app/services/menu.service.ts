@@ -142,7 +142,7 @@ export class MenuService {
   }
 
   execAction() { 
-    this.dialogService.open( "Azione " + this.currentAction.title, "Eseguito method " + this.currentAction.method, "info" );
+    this.dialogService.open( "Azione " + this.currentAction.title, "Eseguito metodo " + this.currentAction.method + "xxxxxxxxxx ddddd fdddd wwwww", "info" );
     this.goToPrevMenu();
   }
 

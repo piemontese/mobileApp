@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as screenfull from 'screenfull';
 
 import { LoginService } from './services/login.service';
 
@@ -16,6 +17,22 @@ export class AppComponent {
   constructor( private router: Router, loginService: LoginService ) 
   {
     this.loginService = loginService;
+  }
+  
+  fullscreen() {
+    debugger;
+//    let docElm = document.documentElement;
+//    docElm.webkitRequestFullscreen();
+    screenfull.toggle();
+//    screenfull.request();
+  }
+  
+  ngOnInit() {
+//    debugger;
+//    let docElm = document.documentElement;
+//    docElm.webkitRequestFullscreen();
+//    screenfull.toggle();
+//    screenfull.request();
   }
   
 }

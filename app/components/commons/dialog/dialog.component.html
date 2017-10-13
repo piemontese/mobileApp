@@ -1,12 +1,13 @@
-<div class="dialog-title">
-  <h3>{{title}}</h3>
+<div class="dialog-title" color="primary">
+  {{title}}
 </div>
 <div class="dialog-content">
-  <h5>{{message}}</h5>
+  {{message}}
 </div>
 <div class="dialog-actions">
-  <button type="button" mat-raised-button 
-          color="primary"
-          [mat-dialog-close]>OK</button>
+  <div fxLayout="row" fxLayout.xs="row" fxLayoutAlign="center center">
+    <button type="button" mat-raised-button 
+            color="primary"
+            [mat-dialog-close]>OK</button>
 </div>
 
