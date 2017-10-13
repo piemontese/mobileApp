@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material';
 import { MatGridListModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material';
 import { MatStepperModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material';
 
   // Thirdy part modules
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -26,11 +27,13 @@ import { MenuComponent } from './components/menu/menu.component';
 import { FormComponent } from './components/commons/form/form.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { ThemesComponent } from './components/themes/themes.component';
+import { FormFieldComponent } from './components/commons/form-field/form-field.component';
+import { DialogComponent } from './components/commons/dialog/dialog.component';
 
   // App service modules
 import { LoginService } from "./services/login.service";
 import { MenuService } from "./services/menu.service";
-import { FormFieldComponent } from './components/commons/form-field/form-field.component';
+import { DialogService } from "./services/dialog.service";
 
 
 @NgModule({
@@ -41,7 +44,8 @@ import { FormFieldComponent } from './components/commons/form-field/form-field.c
     FormComponent,
     SettingsComponent,
     ThemesComponent,
-    FormFieldComponent
+    FormFieldComponent,
+    DialogComponent,
   ],
   imports: [
       // Angular modules
@@ -58,6 +62,7 @@ import { FormFieldComponent } from './components/commons/form-field/form-field.c
     MatGridListModule,
     MatSelectModule,
     MatStepperModule,
+    MatDialogModule,
       // Thirdy part modules
     FlexLayoutModule,
       // App modules
@@ -65,8 +70,12 @@ import { FormFieldComponent } from './components/commons/form-field/form-field.c
   ],
   providers: [
     LoginService,
-    MenuService
+    MenuService,
+    DialogService,
 //    { provide: MethodField, useValue: null }
+  ],
+  entryComponents: [
+    DialogComponent,
   ],
   bootstrap: [AppComponent]
 })

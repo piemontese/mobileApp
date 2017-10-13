@@ -1,28 +1,32 @@
 <mat-form-field hintLabel="Min 10, Max 40 characters"
                 *ngIf="field.type===fieldType.textbox">
-  <input class="field"
+  <input class="form-field"
          matInput 
-         #material 
+         #val 
          name="{{field.field}}"
          value={{field.value}}
          minlength="10" 
          maxlength="18" 
          placeholder={{field.description}}
          required>
-  <mat-hint align="end">{{material.value?.length || 0}}/{{field.maxWidth}}</mat-hint>
-  <mat-error *ngIf="material.value?.length < 10">Material length must be greater than 10</mat-error>
+  <mat-hint align="end">{{val.value?.length || 0}}/{{field.maxWidth}}</mat-hint>
+  <mat-error *ngIf="val.value?.length < 10">{{field.description}} length must be greater than 10</mat-error>
 </mat-form-field>
 
 <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
   <mat-form-field *ngIf="field.type===fieldType.textarea">
-    <textarea class="field"
+    <textarea class="form-field"
+              #val
               matInput placeholder={{field.description}}></textarea>
+  <mat-hint align="end">{{val.value?.length || 0}}/{{field.maxWidth}}</mat-hint>
+  <mat-error *ngIf="val.value?.length < 10">{{field.description}} length must be greater than 10</mat-error>
   </mat-form-field>
 </div>
 
 <mat-form-field *ngIf="field.type===fieldType.select">
-  <mat-select class="field"
+  <mat-select class="form-field"
               placeholder={{field.description}}
+              #val
               value={{field.value}}>
     <mat-option *ngFor="let data of field.data" [value]="data">{{data}}</mat-option>
   </mat-select>

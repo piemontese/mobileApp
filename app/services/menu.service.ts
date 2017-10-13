@@ -2,21 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { FieldType } from '../data/field-type.enum';
 import { MethodField } from '../data/method-field';
+import { DialogService } from '../services/dialog.service';
 
-/*
-export enum FieldType {  
-   email = 1,
-   password = 2,
-   textbox = 3,
-   chechbox = 4,
-   textarea = 5,
-   datepicker = 6,
-   select = 7,
-   sapSelectOptions = 8,
-   table = 9,
-   autocomplete = 10
-};
-*/
 export interface MenuItem { 
   parent: string;
   item: string;
@@ -31,20 +18,7 @@ export interface MenuAction {
   title: string;
   method: string;
 };
-/*
-export interface MethodField { 
-  field: string;
-  description: string;
-  type: FieldType;
-  obligatory: boolean;
-  value: any; //valore da proporre
-  length: number;
-  data: Array<any>; //elenco ad es. autocostruzione  
-  minWidth: number;
-  maxWidth: number;
-  step: number;
-};
-*/
+
 export interface Steps {
   step: string;
 };
@@ -83,7 +57,7 @@ export class MenuService {
   methods: MethodAction[] = [
     { method: "Z_METHOD_1_1_1", fields: [
         { field: "plant", description: "Plant", type: FieldType.select, obligatory: true, value: "1000", length: 4, data: [ "1000", "2000", "3000"], minWidth: 0, maxWidth: 4, step: 1 },
-        { field: "storageLoc", description: "Storage location", type: FieldType.select, obligatory: true, value: "1000", length: 4, data: [ "1000", "2000", "3000", "4000"], minWidth: 0, maxWidth: 4, step: 1 },
+        { field: "storageLoc", description: "Storage location", type: FieldType.select, obligatory: true, value: "1000", length: 4, data: [ "1000 - Roma", "2000 - Milano", "3000 - Napoli", "4000 - Bologna"], minWidth: 0, maxWidth: 4, step: 1 },
       ], 
       steps: [{ step: "1" }],
     },
@@ -105,7 +79,7 @@ export class MenuService {
   currentMethod: MethodAction = null;
   currentSteps: number = 0;
 
-  constructor() { }
+  constructor( private dialogService: DialogService ) { }
   
   getCurrentMenu() : Array<any> {
     let res = [];
@@ -165,6 +139,11 @@ export class MenuService {
       }
     }
     this.getCurrentMenu();
+  }
+
+  execAction() { 
+    this.dialogService.open( "Azione " + this.currentAction.title, "Eseguito method " + this.currentAction.method, "info" );
+    this.goToPrevMenu();
   }
 
 }
