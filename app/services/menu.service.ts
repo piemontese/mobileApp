@@ -142,7 +142,15 @@ export class MenuService {
   }
 
   execAction() { 
-    this.dialogService.open( "Azione " + this.currentAction.title, "Eseguito metodo " + this.currentAction.method, "info" );
+    this.dialogService.open( "Azione " + this.currentAction.title, // title
+                             "Eseguito metodo " + this.currentAction.method,  // message
+                             "message",   // dialog type
+                             "info",   // message type
+                             [
+//                               { caption: "Cancel", color: "", close: false },
+                               { caption: "OK", color: "primary", close: true }
+                             ]  // buttons 
+    );
     this.goToPrevMenu();
   }
 

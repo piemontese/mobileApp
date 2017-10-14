@@ -3,13 +3,19 @@ import { Observable } from 'rxjs/Rx';
 import { MatDialogRef, MatDialog, MatDialogConfig } from '@angular/material';
 import { DialogComponent } from '../components/commons/dialog/dialog.component';
 
+interface Button {
+  caption: string;
+  color: string; 
+  close: boolean;
+};
+
 @Injectable()
 export class DialogService {
 
   constructor( private dialog: MatDialog ) { }
 
-  public open( title, message, type ): Observable<boolean> {
-
+  public open( title, message, dialogType, messageType, buttons: Button[] ): Observable<boolean> 
+  {
     let dialogRef: MatDialogRef<DialogComponent>;
 
     dialogRef = this.dialog.open(DialogComponent, {
@@ -18,10 +24,13 @@ export class DialogService {
 //      height: '80%',
       disableClose: true,  // modal
     });
-    dialogRef.componentInstance.type = type;
+    dialogRef.componentInstance.dialogType = dialogType;
+    dialogRef.componentInstance.messageType = messageType;
     dialogRef.componentInstance.title = title;
     dialogRef.componentInstance.message = message;
+    dialogRef.componentInstance.buttons = buttons;
 
     return dialogRef.afterClosed();
   }
+  
 }

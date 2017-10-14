@@ -13,18 +13,25 @@ export class LoginService {
   
   login( user: string, password: string ) { 
     if ( atob(user) === "errato" ) {
-      this.dialogService.open( "Login", "Utente o password errati", "info" );
+      this.dialogService.open( "Login",   // title
+                               "Utente o password errati",  // message
+                               "message",   // dialog type
+                               "error",   // message type
+                               [
+                                 { caption: "OK", color: "primary", close: true }
+                               ]  // buttons
+      );
       return;
     }
     this.logged = true;
     this.router.navigate(['menu']); 
   }
 
-  logout() 
-  {
+  logout() {
     this.logged = false;
     this.router.navigate(['login']);     
   }
+  
   isLogged() { 
     return this.logged;
   }
