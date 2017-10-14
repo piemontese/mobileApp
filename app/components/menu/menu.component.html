@@ -43,7 +43,9 @@
               <div *ngIf="i < menuService.currentSteps-1">
                 <button mat-button matStepperNext><mat-icon>arrow_forward</mat-icon></button>
               </div>
-              <div *ngIf="i === menuService.currentSteps-1">
+              <div *ngIf="i === menuService.currentSteps-1"
+                   fxLayout="row"
+                   fxLayoutAlign="end end">
                 <span class="right-spacer"></span>
                 <button mat-raised-button color="primary" (click)="menuService.execAction()">OK</button>
               </div>
