@@ -29,7 +29,7 @@ export class DialogService {
     dialogRef.componentInstance.title = title;
     dialogRef.componentInstance.message = message;
     dialogRef.componentInstance.buttons = buttons;
-
+  
     return dialogRef.afterClosed();
   }
   

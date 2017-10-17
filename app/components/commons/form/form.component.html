@@ -1,33 +1,61 @@
-<p>
-  form works!
-</p>
-
-<!--
-          <form [formGroup]="form">
-            <div formGroupName="name">
-              <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
-                <div class="input-control" *ngFor="let field of fields">
-                  <mat-input-container>
-                    <input formControlName="user" matInput placeholder="User" id="user" value="" class="form-control" [(ngModel)]="user" name="user" [autofocus]>
-                  </mat-input-container>
-                </div>
-                <!--
-                <div class="input-control">
-                  <mat-input-container>
-                    <input formControlName="password" matInput placeholder="Password" type="password" id="password" value="" class="form-control" [(ngModel)]="password" name="password">
-                  </mat-input-container>
-                </div>
-                -->
-                <br/>
-                <!--<mat-card-actions> -->
-                <!--
-                <button mat-raised-button [disabled]="form.status==='INVALID'" color="primary" i18n-mdTooltip mdTooltip="Login" mdTooltipPosition="below" (click)="login()" type="submit" class="input-control" i18n>Login</button>
-                -->
-                <!-- </mat-card-actions> -->
-<!--
-              </div>
+<div *ngIf="menuService.currentAction && menuService.parent !== '' && menuService.currentMethod">
+  <div class="full-width" fxLayout="column" fxLayoutAlign="center center">
+    <div class="action-card-title" 
+         style="padding-bottom: 20px;">
+      {{menuService.currentAction.title}}
+    </div>
+<!--    <mat-horizontal-stepper [linear]="isLinear">-->
+      <div *ngFor="let step of menuService.currentMethod.steps; let i=index;"
+           class="full-width">
+<!--        <mat-step [stepControl]="step">-->
+          <div fxLayout="column" 
+               fxLayout.xs="column" 
+               fxLayoutAlign="center center"
+               class="full-width"
+               *ngFor="let field of menuService.currentMethod.fields">
+            
+            <app-form-field *ngIf="field.step===i+1 && i===currentStep"
+                            fxLayout="column" 
+                            fxLayout.xs="column" 
+                            fxLayoutAlign="center center"
+                            class="form-field"
+                            [field]="field"></app-form-field>
+        
+          </div>
+          <br/>
+          <div fxLayout="row"                
+               fxLayoutAlign="center center"
+               class="form-field">
+            <div *ngIf="i>0 && i===currentStep"
+                 fxLayout="row"
+                 fxLayoutAlign="start end"
+                 style="margin-top: -20px; padding-bottom: 20px;">
+  <!--            <button mat-button matStepperPrevious><mat-icon>arrow_back</mat-icon></button>-->
+              <button mat-button 
+                      (click)="currentStep = currentStep - 1">
+                <mat-icon>arrow_back</mat-icon></button>
             </div>
-            <br/>
-          </form>
--->
+            <div *ngIf="i<menuService.currentSteps-1 && i===currentStep"
+                 fxLayout="row"
+                 fxLayoutAlign="end end"
+                 style="margin-top: -20px; padding-bottom: 20px;">
+  <!--            <button mat-button matStepperNext><mat-icon>arrow_forward</mat-icon></button>-->
+              <button mat-button 
+                      (click)="currentStep = currentStep + 1">
+                <mat-icon>arrow_forward</mat-icon></button>
+            </div>
+          </div>
+          <div *ngIf="i===menuService.currentSteps-1 && i===currentStep"
+               fxLayout="row"
+               fxLayoutAlign="end end"
+               class="form-field">
+            <button mat-raised-button 
+                    color="primary" 
+                    (click)="currentStep=0; menuService.execAction()">OK</button>
+          </div>
+<!--        </mat-step>-->
+      </div>
+<!--    </mat-horizontal-stepper>-->
 
+  </div>
+</div>
