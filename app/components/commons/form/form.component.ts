@@ -1,7 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { FieldType } from '../../../data/field-type.enum';
 import { MethodField } from '../../../data/method-field';
+import { FieldStepPipe } from '../../../pipes/field-step.pipe';
+import { DialogService } from '../../../services/dialog.service';
 
 @Component({
   selector: 'app-form',
@@ -11,8 +14,30 @@ import { MethodField } from '../../../data/method-field';
 export class FormComponent implements OnInit {
   @Input() menuService: any;
   currentStep: number = 0;
+  form: FormGroup;
 
-  constructor() { }
+  constructor( private dialogService: DialogService ) { }
+
+  getCurrentFields( index: number ) { 
+    let fieldStepPipe = new FieldStepPipe;
+    let filtered = [];
+    if ( index+1 === this.menuService.currentMethod.fields[index].step )
+      filtered = fieldStepPipe.transform(this.menuService.currentMethod.fields, this.currentStep+1);
+    return filtered;
+  }
+  
+  execAction() { 
+    this.dialogService.open( "Azione " + this.menuService.currentAction.title, // title
+                             "Eseguito metodo " + this.menuService.currentAction.method,  // message
+                             "message",   // dialog type
+                             "info",   // message type
+                             [
+//                               { caption: "Cancel", color: "", close: false },
+                               { caption: "OK", color: "primary", close: true }
+                             ]  // buttons 
+    );
+    this.menuService.goToPrevMenu();
+  }
 
   ngOnInit() {
     this.currentStep = 0;

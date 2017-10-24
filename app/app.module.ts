@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
   // Material modules
 import { MatToolbarModule } from '@angular/material';
@@ -37,6 +38,8 @@ import { LoginService } from "./services/login.service";
 import { MenuService } from "./services/menu.service";
 import { DialogService } from "./services/dialog.service";
 import { FullscreenDirective } from './directives/fullscreen.directive';
+import { FieldPipe } from './pipes/field.pipe';
+import { FieldStepPipe } from './pipes/field-step.pipe';
 
 
 @NgModule({
@@ -50,12 +53,15 @@ import { FullscreenDirective } from './directives/fullscreen.directive';
     FormFieldComponent,
     DialogComponent,
     FullscreenDirective,
+    FieldPipe,
+    FieldStepPipe,
   ],
   imports: [
       // Angular modules
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    FormsModule,
       // Material modules
     MatToolbarModule,
     MatIconModule,

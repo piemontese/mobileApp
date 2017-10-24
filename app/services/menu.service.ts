@@ -34,7 +34,7 @@ export class MenuService {
   fieldType: FieldType;
   parent: string = "";
   menu: MenuItem[] = [
-    { parent: "", item: "item_1", description: "Item 1", action: "item_1_1", visible: false },
+    { parent: "", item: "item_1", description: "Item 1", action: "item_1_1" , visible: false },
     { parent: "", item: "item_2", description: "Item 2", action: "item_2_1", visible: false },
     { parent: "", item: "item_3", description: "Item 3", action: "item_3_1", visible: false },
     { parent: "", item: "item_4", description: "Item 4", action: "item_4_1", visible: false },
