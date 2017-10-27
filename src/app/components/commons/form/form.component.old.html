@@ -9,15 +9,16 @@
          class="full-width">
 <!--       <mat-step [stepControl]="step">-->
 
-      <app-form-field *ngFor="let field of getCurrentFields(i); let j=index;"
-                      fxLayout="column" 
-                      fxLayout.xs="column" 
-                      fxLayoutAlign="center center"
-                      [field]="field"></app-form-field>
-      
+      <app-form-field *ngFor="let field of getCurrentFields(i)"
+                          fxLayout="column" 
+                          fxLayout.xs="column" 
+                          fxLayoutAlign="center center"
+                          [field]="field"></app-form-field>
+
       <br/>
       <div fxLayout="row"                
-           fxLayoutAlign="center center">
+           fxLayoutAlign="center center"
+           class="form-field">
         <div *ngIf="i>0 && i===currentStep"
              fxLayout="row"
              fxLayoutAlign="start end"
@@ -43,7 +44,7 @@
            class="form-field">
         <button mat-raised-button 
                 color="primary" 
-                (click)="currentStep=0; execAction()">OK</button>
+                (click)="currentStep=0; menuService.execAction()">OK</button>
       </div>
 <!--        </mat-step>-->
     </div>

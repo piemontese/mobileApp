@@ -9,6 +9,7 @@ import { MenuService } from '../../services/menu.service';
 })
 export class MenuComponent implements OnInit {
   menuService: MenuService;
+  currentStep: number = 0;
 
   constructor( menuService: MenuService ) {
     this.menuService = menuService;

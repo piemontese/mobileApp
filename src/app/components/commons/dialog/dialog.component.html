@@ -1,0 +1,33 @@
+<div class="dialog-title" color="primary">
+  {{title}}
+</div>
+<div class="dialog-content">
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <div *ngIf="messageType==='info'" fxFlex="13%" style="padding-right: 10px;">
+      <mat-icon color="primary">info</mat-icon>
+    </div>
+    <div *ngIf="messageType==='error'" fxFlex="13%" style="padding-right: 10px;">
+      <mat-icon color="warn">error</mat-icon>
+    </div>
+    <div *ngIf="messageType==='warning'" fxFlex="13%" style="padding-right: 10px;">
+      <mat-icon color="accent">warning</mat-icon>
+    </div>
+    {{messages[0]}}
+  </div>
+  <div *ngFor="let message of messages; let i=index;"
+       fxLayout="row" fxLayoutAlign="start center">
+    <div fxFlex="12%"></div>
+    <div *ngIf="i>0">{{message}}</div>
+  </div>
+</div>
+<div class="dialog-actions">
+  <div fxLayout="row" fxLayoutAlign="end end">
+    <button type="button" 
+            mat-raised-button 
+            *ngFor="let button of buttons"  
+            [color]="button.color"
+            style="padding-left: 10px;"
+            [mat-dialog-close]>{{button.caption}}</button>
+  </div>
+</div>
+
