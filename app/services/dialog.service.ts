@@ -14,7 +14,7 @@ export class DialogService {
 
   constructor( private dialog: MatDialog ) { }
 
-  public open( title, message, dialogType, messageType, buttons: Button[] ): Observable<boolean> 
+  public open( title, messages, dialogType, messageType, buttons: Button[] ): Observable<boolean> 
   {
     let dialogRef: MatDialogRef<DialogComponent>;
 
@@ -27,7 +27,7 @@ export class DialogService {
     dialogRef.componentInstance.dialogType = dialogType;
     dialogRef.componentInstance.messageType = messageType;
     dialogRef.componentInstance.title = title;
-    dialogRef.componentInstance.message = message;
+    dialogRef.componentInstance.messages = messages;
     dialogRef.componentInstance.buttons = buttons;
   
     return dialogRef.afterClosed();

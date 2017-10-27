@@ -14,21 +14,26 @@ import { DialogService } from '../../../services/dialog.service';
 export class FormComponent implements OnInit {
   @Input() menuService: any;
   currentStep: number = 0;
+  currentFields: Array<any> = [];
   form: FormGroup;
 
   constructor( private dialogService: DialogService ) { }
 
   getCurrentFields( index: number ) { 
     let fieldStepPipe = new FieldStepPipe;
-    let filtered = [];
+    this.currentFields = [];
     if ( index+1 === this.menuService.currentMethod.fields[index].step )
-      filtered = fieldStepPipe.transform(this.menuService.currentMethod.fields, this.currentStep+1);
-    return filtered;
+      this.currentFields = fieldStepPipe.transform(this.menuService.currentMethod.fields, this.currentStep+1);
+    return this.currentFields;
   }
   
   execAction() { 
+    let msg: Array<string> = [];
+    msg[0] = "Eseguito metodo " + this.menuService.currentAction.method;
+    for ( let i=0; i<this.menuService.currentMethod.fields.length; i++ )
+      msg[i+1] = this.menuService.currentMethod.fields[i].field + " = " + this.menuService.currentMethod.fields[i].value;
     this.dialogService.open( "Azione " + this.menuService.currentAction.title, // title
-                             "Eseguito metodo " + this.menuService.currentAction.method,  // message
+                             msg,  //[ "Eseguito metodo " + this.menuService.currentAction.method ],  // message
                              "message",   // dialog type
                              "info",   // message type
                              [

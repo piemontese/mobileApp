@@ -56,21 +56,22 @@ export class MenuService {
   ];
   methods: MethodAction[] = [
     { method: "Z_METHOD_1_1_1", fields: [
-        { field: "plant", description: "Plant", type: FieldType.select, obligatory: true, value: "1000", length: 4, data: [ "1000", "2000", "3000"], minWidth: 0, maxWidth: 4, step: 1 },
-        { field: "storageLoc", description: "Storage location", type: FieldType.select, obligatory: true, value: "1000", length: 4, data: [ "1000 - Roma", "2000 - Milano", "3000 - Napoli", "4000 - Bologna"], minWidth: 0, maxWidth: 4, step: 1 },
+        { field: "plant", description: "Plant", type: FieldType.select, obligatory: true, value: "1000", length: 4, data: [ "1000", "2000", "3000"], minWidth: "0", maxWidth: "4", step: 1 },
+        { field: "storageLoc", description: "Storage location", type: FieldType.select, obligatory: true, value: "1000", length: 4, data: [ "1000 - Roma", "2000 - Milano", "3000 - Napoli", "4000 - Bologna"], minWidth: "0", maxWidth: "4", step: 1 },
       ], 
       steps: [{ step: "1" }],
     },
     { method: "Z_METHOD_3", fields: [
-        { field: "material", description: "Material", type: FieldType.textbox, obligatory: true, value: "100-002", length: 18, data: null, minWidth: 0, maxWidth: 18, step: 1 },
-        { field: "plant", description: "Plant", type: FieldType.select, obligatory: true, value: "1000", length: 4, data: [ "1000", "2000", "3000"], minWidth: 0, maxWidth: 4, step: 1 },
-        { field: "storageLoc", description: "Storage location", type: FieldType.select, obligatory: true, value: "", length: 4, data: [ "1001", "1002", "1003"], minWidth: 0, maxWidth: 4, step: 2 },
-        { field: "note", description: "Note", type: FieldType.textarea, obligatory: false, value: "", length: 200, data: null, minWidth: 0, maxWidth: 1000, step: 3 },
+        { field: "material", description: "Material", type: FieldType.textbox, obligatory: true, value: "100-002", length: 18, data: null, minWidth: "0", maxWidth: "18", step: 1 },
+        { field: "plant", description: "Plant", type: FieldType.select, obligatory: true, value: "1000", length: 4, data: [ "1000", "2000", "3000"], minWidth: "0", maxWidth: "4", step: 1 },
+        { field: "storageLoc", description: "Storage location", type: FieldType.select, obligatory: true, value: "", length: 4, data: [ "1001", "1002", "1003"], minWidth: "0", maxWidth: "4", step: 2 },
+        { field: "date", description: "Date", type: FieldType.datepicker, obligatory: true, value: "", length: 4, data: null, minWidth: "0", maxWidth: "10", step: 2 },
+        { field: "note", description: "Note", type: FieldType.textarea, obligatory: false, value: "", length: 200, data: null, minWidth: "0", maxWidth: "1000", step: 3 },
       ], 
       steps: [{ step: "1" }, { step: "2" }, { step: "3" }],
     },
     { method: "Z_METHOD_4", fields: [
-        { field: "material", description: "Material", type: FieldType.textbox, obligatory: true, value: "100-001", length: 18, data: null, minWidth: 0, maxWidth: 18, step: 1 },
+        { field: "material", description: "Material", type: FieldType.textbox, obligatory: true, value: "100-001", length: 18, data: null, minWidth: "0", maxWidth: "18", step: 1 },
       ], 
       steps: [{ step: "1" }],
     },

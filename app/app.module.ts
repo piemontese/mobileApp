@@ -17,6 +17,8 @@ import { MatSelectModule } from '@angular/material';
 import { MatStepperModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material';
 import { MatTooltipModule } from '@angular/material';
+import { MatDatepickerModule } from '@angular/material';
+import { MatNativeDateModule } from '@angular/material';
 
   // Thirdy part modules
 import 'hammerjs';
@@ -74,6 +76,8 @@ import { FieldStepPipe } from './pipes/field-step.pipe';
     MatStepperModule,
     MatDialogModule,
     MatTooltipModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
       // Thirdy part modules
     FlexLayoutModule,
       // App modules
@@ -84,6 +88,7 @@ import { FieldStepPipe } from './pipes/field-step.pipe';
     MenuService,
     DialogService,
 //    { provide: MethodField, useValue: null }
+//    { provide: MAT_DATE_LOCALE, useValue: 'it-IT' },
   ],
   entryComponents: [
     DialogComponent,

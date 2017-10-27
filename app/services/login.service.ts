@@ -14,7 +14,7 @@ export class LoginService {
   login( user: string, password: string ) { 
     if ( atob(user) === "errato" ) {
       this.dialogService.open( "Login",   // title
-                               "Utente o password errati",  // message
+                               ["Utente o password errati"],  // array of messages
                                "message",   // dialog type
                                "error",   // message type
                                [

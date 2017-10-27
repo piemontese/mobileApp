@@ -14,12 +14,14 @@
     <span *ngIf="loginService.isLogged()" style="margin-top: -5px; margin-left: 10px;">Sistema</span>
 
     <span class="right-spacer"></span>
+<!--
     <button mat-icon-button 
             tooltip="Toggle Fullscreen" 
             tooltipPosition="left" 
             appFullscreen
             *ngIf="loginService.isLogged()">
       <mat-icon>fullscreen</mat-icon></button>
+-->
     <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="loginService.isLogged()">
       <mat-icon>view_headline</mat-icon></button>
     <mat-menu #menu="matMenu">
@@ -29,9 +31,13 @@
       <button mat-menu-item 
               [routerLink]="['/settings']">
         <mat-icon>build</mat-icon>Impostazioni</button>
+<!--
       <button mat-menu-item 
               (click)="loginService.logout()"
               appFullscreen>
+-->
+      <button mat-menu-item 
+              (click)="loginService.logout()">
         <mat-icon>person_outline</mat-icon>Logout</button>
     </mat-menu>
   </mat-toolbar-row>
