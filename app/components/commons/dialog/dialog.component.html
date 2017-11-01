@@ -14,13 +14,13 @@
     </div>
     {{messages[0]}}
   </div>
-  <div style="margin-top: -12px;">
+<!--  <div style="margin-top: -12px;">-->
   <div *ngFor="let message of messages; let i=index;"
        fxLayout="row" fxLayoutAlign="start center">
     <div fxFlex="12%"></div>
     <div *ngIf="i>0">{{message}}</div>
   </div>
-  </div>
+<!--  </div>-->
 </div>
 <div class="dialog-actions">
   <div fxLayout="row" fxLayoutAlign="end end">
