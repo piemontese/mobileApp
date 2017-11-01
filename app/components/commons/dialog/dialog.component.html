@@ -2,8 +2,9 @@
   {{title}}
 </div>
 <div class="dialog-content">
+<!--
   <div fxLayout="row" fxLayoutAlign="start center">
-    <div *ngIf="messageType==='info'" fxFlex="16%" style="margin-left: -13px; padding-right: 10px;">
+    <div *ngIf="messageType==='info'" fxFlex="16%" style="margin-left: -12px; padding-right: 10px;">
       <mat-icon color="primary">info</mat-icon>
     </div>
     <div *ngIf="messageType==='error'" fxFlex="20%" style="margin-left: -13px; padding-right: 10px;">
@@ -14,13 +15,29 @@
     </div>
     {{messages[0]}}
   </div>
-<!--  <div style="margin-top: -12px;">-->
   <div *ngFor="let message of messages; let i=index;"
        fxLayout="row" fxLayoutAlign="start center">
     <div fxFlex="12%"></div>
     <div *ngIf="i>0">{{message}}</div>
   </div>
-<!--  </div>-->
+-->
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <div *ngIf="messageType==='info'" fxFlex="16%" style="margin-left: -12px; padding-right: 10px;">
+      <mat-icon color="primary">info</mat-icon>
+    </div>
+    <div *ngIf="messageType==='error'" fxFlex="20%" style="margin-left: -13px; padding-right: 10px;">
+      <mat-icon color="warn">error</mat-icon>
+    </div>
+    <div *ngIf="messageType==='warning'" fxFlex="20%" style="margin-left: -13px; padding-right: 10px;">
+      <mat-icon color="accent">warning</mat-icon>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="start start">
+      <div *ngFor="let message of messages; let i=index;"
+           fxLayout="row" fxLayoutAlign="start center">
+        {{message}}
+      </div>
+    </div>
+  </div>
 </div>
 <div class="dialog-actions">
   <div fxLayout="row" fxLayoutAlign="end end">
