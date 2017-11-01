@@ -1,49 +1,29 @@
 import { Injectable } from '@angular/core';
 
-import { FieldType } from '../data/field-type.enum';
-import { MethodField } from '../data/method-field';
+import { FieldType } from '../models/field-type.enum';
+import { MethodField } from '../models/method-field';
+import { MenuItem } from '../models/menu-item';
+import { MenuAction } from '../models/menu-action';
+import { MethodAction } from '../models/method-action';
+
+import { LoginService } from '../services/login.service';
 import { DialogService } from '../services/dialog.service';
-
-export interface MenuItem { 
-  parent: string;
-  item: string;
-  description: string;
-  action: string;
-  visible: boolean;
-};
-
-export interface MenuAction { 
-  parent: string;
-  item: string;
-  title: string;
-  method: string;
-};
-
-export interface Steps {
-  step: string;
-};
-  
-export interface MethodAction { 
-  method: string;
-  fields: MethodField[];
-  steps: Steps[]; //per mat-stepper
-};
 
 @Injectable()
 export class MenuService {
   fieldType: FieldType;
   parent: string = "";
   menu: MenuItem[] = [
-    { parent: "", item: "item_1", description: "Item 1", action: "item_1_1" , visible: false },
-    { parent: "", item: "item_2", description: "Item 2", action: "item_2_1", visible: false },
-    { parent: "", item: "item_3", description: "Item 3", action: "item_3_1", visible: false },
-    { parent: "", item: "item_4", description: "Item 4", action: "item_4_1", visible: false },
-    { parent: "", item: "item_5", description: "Item 5", action: "item_5_1", visible: false },
-    { parent: "item_1", item: "item_1_1", description: "Item 1 1", action: "item_1_1_1", visible: false },
-    { parent: "item_1", item: "item_1_2", description: "Item 1 2", action: "item_1_2_1", visible: false},
-    { parent: "item_1", item: "item_1_3", description: "Item 1 3", action: "item_1_3_1", visible: false},
-    { parent: "item_2", item: "item_2_1", description: "Item 2 1", action: "item_2_1_1", visible: false},
-    { parent: "item_1_1", item: "item_1_1_1", description: "Item 1 1 1", action: "item_1_1_1_1", visible: false },
+    { parent: "", item: "item_1", description: "Item 1", action: "item_1_1", auth: "auth1", visible: false },
+    { parent: "", item: "item_2", description: "Item 2", action: "item_2_1", auth: "auth2", visible: false },
+    { parent: "", item: "item_3", description: "Item 3", action: "item_3_1", auth: "auth3", visible: false },
+    { parent: "", item: "item_4", description: "Item 4", action: "item_4_1", auth: "auth4", visible: false },
+    { parent: "", item: "item_5", description: "Item 5", action: "item_5_1", auth: "auth5", visible: false },
+    { parent: "item_1", item: "item_1_1", description: "Item 1 1", action: "item_1_1_1", auth: "auth1", visible: false },
+    { parent: "item_1", item: "item_1_2", description: "Item 1 2", action: "item_1_2_1", auth: "auth1", visible: false},
+    { parent: "item_1", item: "item_1_3", description: "Item 1 3", action: "item_1_3_1", auth: "auth1", visible: false},
+    { parent: "item_2", item: "item_2_1", description: "Item 2 1", action: "item_2_1_1", auth: "auth2", visible: false},
+    { parent: "item_1_1", item: "item_1_1_1", description: "Item 1 1 1", action: "item_1_1_1_1", auth: "auth1", visible: false },
   ];
   actions: MenuAction[] = [
     { parent: "item_1_1_1", item: "action_1_1_1", title: "Action 1 1 1", method: "Z_METHOD_1_1_1" },
@@ -59,7 +39,8 @@ export class MenuService {
         { field: "plant", description: "Plant", type: FieldType.select, obligatory: true, value: "1000", length: 4, data: [ "1000", "2000", "3000"], minWidth: "0", maxWidth: "4", step: 1 },
         { field: "storageLoc", description: "Storage location", type: FieldType.select, obligatory: true, value: "1000", length: 4, data: [ "1000 - Roma", "2000 - Milano", "3000 - Napoli", "4000 - Bologna"], minWidth: "0", maxWidth: "4", step: 1 },
       ], 
-      steps: [{ step: "1" }],
+//      steps: [{ step: "1" }],
+      steps: [ "1" ],
     },
     { method: "Z_METHOD_3", fields: [
         { field: "material", description: "Material", type: FieldType.textbox, obligatory: true, value: "100-002", length: 18, data: null, minWidth: "0", maxWidth: "18", step: 1 },
@@ -68,26 +49,37 @@ export class MenuService {
         { field: "date", description: "Date", type: FieldType.datepicker, obligatory: true, value: "", length: 4, data: null, minWidth: "0", maxWidth: "10", step: 2 },
         { field: "note", description: "Note", type: FieldType.textarea, obligatory: false, value: "", length: 200, data: null, minWidth: "0", maxWidth: "1000", step: 3 },
       ], 
-      steps: [{ step: "1" }, { step: "2" }, { step: "3" }],
+//      steps: [{ step: "1" }, { step: "2" }, { step: "3" }],
+      steps: [ "1", "2", "3" ],
     },
     { method: "Z_METHOD_4", fields: [
         { field: "material", description: "Material", type: FieldType.textbox, obligatory: true, value: "100-001", length: 18, data: null, minWidth: "0", maxWidth: "18", step: 1 },
       ], 
-      steps: [{ step: "1" }],
+//      steps: [{ step: "1" }],
+      steps: [ "1" ],
     },
   ];
   currentItem: MenuItem = null;
   currentAction: MenuAction = null;
   currentMethod: MethodAction = null;
   currentSteps: number = 0;
+  loginService: LoginService;
 
-  constructor( private dialogService: DialogService ) { }
+  constructor( loginService: LoginService, private dialogService: DialogService ) { 
+    this.loginService = loginService;
+  }
   
   getCurrentMenu() : Array<any> {
     let res = [];
     for( let i = 0; i < this.menu.length; i++ ) { 
-      if ( this.menu[i].parent === this.parent )
-        res.push( this.menu[i] );
+      if ( this.menu[i].parent === this.parent ) {
+        for ( let j=0; j<this.loginService.user.auths.length; j++ ) {
+          if ( this.menu[i].auth === this.loginService.user.auths[j] ) {
+            res.push( this.menu[i] );
+            break;
+          }
+        }
+      }
     }
     this.getCurrentAction();
     this.getCurrentMehod();

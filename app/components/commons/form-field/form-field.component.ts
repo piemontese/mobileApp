@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { DateAdapter, NativeDateAdapter } from '@angular/material';
 
-import { FieldType } from '../../../data/field-type.enum';
-import { MethodField } from '../../../data/method-field';
+import { FieldType } from '../../../models/field-type.enum';
+import { MethodField } from '../../../models/method-field';
 import { DialogService } from '../../../services/dialog.service';
 
 @Component({

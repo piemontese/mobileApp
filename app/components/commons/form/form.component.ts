@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { FieldType } from '../../../data/field-type.enum';
-import { MethodField } from '../../../data/method-field';
+import { FieldType } from '../../../models/field-type.enum';
+import { MethodField } from '../../../models/method-field';
 import { FieldStepPipe } from '../../../pipes/field-step.pipe';
 import { DialogService } from '../../../services/dialog.service';
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { UserData } from "../../data/user-data";
+import { UserData } from "../../models/user-data";
 import { LoginService } from '../../services/login.service';
 
 @Component({
