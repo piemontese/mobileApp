@@ -4,11 +4,11 @@ export interface MethodField {
   field: string;
   description: string;
   type: FieldType;
-  obligatory: boolean;
+  required: boolean;
   value: any; //valore da proporre
   length: number;
   data: Array<any>; //elenco ad es. autocostruzione  
-  minWidth: string;
-  maxWidth: string;
+  minlength: string;
+  maxlength: string;
   step: number;
 }

@@ -1,37 +1,19 @@
-<div class="dialog-title" color="primary">
+<div class="dialog-title" color="primary" style="margin-top: -10px;">
   {{title}}
 </div>
+  <mat-dialog-content>
 <div class="dialog-content">
-<!--
   <div fxLayout="row" fxLayoutAlign="start center">
-    <div *ngIf="messageType==='info'" fxFlex="16%" style="margin-left: -12px; padding-right: 10px;">
+    <div *ngIf="messageType==='info'" fxFlex="16%" style="margin-left: -12px; padding-right: 25px;">
       <mat-icon color="primary">info</mat-icon>
     </div>
-    <div *ngIf="messageType==='error'" fxFlex="20%" style="margin-left: -13px; padding-right: 10px;">
+    <div *ngIf="messageType==='error'" fxFlex="20%" style="margin-left: -13px; padding-right: 25px;">
       <mat-icon color="warn">error</mat-icon>
     </div>
-    <div *ngIf="messageType==='warning'" fxFlex="20%" style="margin-left: -13px; padding-right: 10px;">
+    <div *ngIf="messageType==='warning'" fxFlex="20%" style="margin-left: -13px; padding-right: 25px;">
       <mat-icon color="accent">warning</mat-icon>
     </div>
-    {{messages[0]}}
-  </div>
-  <div *ngFor="let message of messages; let i=index;"
-       fxLayout="row" fxLayoutAlign="start center">
-    <div fxFlex="12%"></div>
-    <div *ngIf="i>0">{{message}}</div>
-  </div>
--->
-  <div fxLayout="row" fxLayoutAlign="start center">
-    <div *ngIf="messageType==='info'" fxFlex="16%" style="margin-left: -12px; padding-right: 10px;">
-      <mat-icon color="primary">info</mat-icon>
-    </div>
-    <div *ngIf="messageType==='error'" fxFlex="20%" style="margin-left: -13px; padding-right: 10px;">
-      <mat-icon color="warn">error</mat-icon>
-    </div>
-    <div *ngIf="messageType==='warning'" fxFlex="20%" style="margin-left: -13px; padding-right: 10px;">
-      <mat-icon color="accent">warning</mat-icon>
-    </div>
-    <div fxLayout="column" fxLayoutAlign="start start">
+    <div fxLayout="column" fxLayoutAlign="start start" styles="margin-left: 10px;">
       <div *ngFor="let message of messages; let i=index;"
            fxLayout="row" fxLayoutAlign="start center">
         {{message}}
@@ -39,6 +21,7 @@
     </div>
   </div>
 </div>
+</mat-dialog-content>
 <div class="dialog-actions">
   <div fxLayout="row" fxLayoutAlign="end end">
     <button type="button" 
@@ -49,4 +32,3 @@
             [mat-dialog-close]>{{button.caption}}</button>
   </div>
 </div>
-

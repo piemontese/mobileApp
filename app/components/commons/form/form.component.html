@@ -1,5 +1,5 @@
 <div *ngIf="menuService.currentAction && menuService.parent !== '' && menuService.currentMethod">
-  <div class="full-width" fxLayout="column" fxLayoutAlign="center center">
+  <div fxLayout="column" fxLayoutAlign="center center">
     <div class="action-card-title" 
          style="padding-bottom: 20px;">
       {{menuService.currentAction.title}}
@@ -40,10 +40,11 @@
       <div *ngIf="i===menuService.currentSteps-1 && i===currentStep"
            fxLayout="row"
            fxLayoutAlign="end end"
-           class="form-field">
+           class="form-button">
         <button mat-raised-button 
                 color="primary" 
-                (click)="currentStep=0; execAction()">OK</button>
+                (click)="currentStep=0; execAction()"
+                style="margin-left: 10px;">OK</button>
       </div>
 <!--        </mat-step>-->
     </div>
