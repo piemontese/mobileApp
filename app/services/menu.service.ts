@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 
-import { FieldType } from '../models/field-type.enum';
-import { MethodField } from '../models/method-field';
-import { MenuItem } from '../models/menu-item';
-import { MenuAction } from '../models/menu-action';
-import { MethodAction } from '../models/method-action';
+import { IFieldType } from '../models/field-type.enum';
+import { IMethodField } from '../models/method-field';
+import { IMenuItem } from '../models/menu-item';
+import { IMenuAction } from '../models/menu-action';
+import { IMethodAction } from '../models/method-action';
 
 import { LoginService } from '../services/login.service';
 import { DialogService } from '../services/dialog.service';
 
 @Injectable()
 export class MenuService {
-  fieldType: FieldType;
+  fieldType: IFieldType;
   parent: string = "";
-  menu: MenuItem[] = [
+  menu: IMenuItem[] = [
     { parent: "", item: "item_1", description: "Item 1", action: "item_1_1", auth: "auth1", visible: false },
     { parent: "", item: "item_2", description: "Item 2", action: "item_2_1", auth: "auth2", visible: false },
     { parent: "", item: "item_3", description: "Item 3", action: "item_3_1", auth: "auth3", visible: false },
@@ -25,7 +25,7 @@ export class MenuService {
     { parent: "item_2", item: "item_2_1", description: "Item 2 1", action: "item_2_1_1", auth: "auth2", visible: false},
     { parent: "item_1_1", item: "item_1_1_1", description: "Item 1 1 1", action: "item_1_1_1_1", auth: "auth1", visible: false },
   ];
-  actions: MenuAction[] = [
+  actions: IMenuAction[] = [
     { parent: "item_1_1_1", item: "action_1_1_1", title: "Action 1 1 1", method: "Z_METHOD_1_1_1" },
     { parent: "item_1_2", item: "action_1_2", title: "Action 1 2", method: "Z_METHOD_1_2" },
     { parent: "item_1_3", item: "action_1_3", title: "Action 1 3", method: "Z_METHOD_1_3" },
@@ -34,39 +34,41 @@ export class MenuService {
     { parent: "item_4", item: "action_4", title: "Action 4", method: "Z_METHOD_4" },
     { parent: "item_5", item: "action_5", title: "Action 5", method: "Z_METHOD_5" },
   ];
-  methods: MethodAction[] = [
+  defaultMethods: IMethodAction[] = [];
+  methods: IMethodAction[] = [
     { method: "Z_METHOD_1_1_1", fields: [
-        { field: "plant", description: "Plant", type: FieldType.select, required: true, value: "1000", length: 4, data: [ "1000", "2000", "3000"], minlength: "0", maxlength: "4", step: 1 },
-        { field: "storageLoc", description: "Storage location", type: FieldType.select, required: true, value: "2000", length: 4, data: [ "1000", "2000", "3000", "4000"], minlength: "0", maxlength: "4", step: 1 },
+        { field: "plant", description: "Plant", type: IFieldType.select, required: true, value: "1000", length: 4, data: [ "", "1000", "2000", "3000"], minlength: "0", maxlength: "4", step: 1, valid: false },
+        { field: "storageLoc", description: "Storage location", type: IFieldType.select, required: true, value: "2000", length: 4, data: [ "1000", "2000", "3000", "4000"], minlength: "0", maxlength: "4", step: 1, valid: false },
       ], 
-//      steps: [{ step: "1" }],
       steps: [ "1" ],
+      repeat: false,
     },
     { method: "Z_METHOD_3", fields: [
-        { field: "material", description: "Material", type: FieldType.textbox, required: true, value: "100-002", length: 18, data: null, minlength: "6", maxlength: "18", step: 1 },
-        { field: "plant", description: "Plant", type: FieldType.select, required: true, value: "1000", length: 4, data: [ "1000", "2000", "3000"], minlength: "0", maxlength: "4", step: 1 },
-        { field: "storageLoc", description: "Storage location", type: FieldType.select, required: true, value: "", length: 4, data: [ "1001", "1002", "1003"], minlength: "0", maxlength: "4", step: 2 },
-        { field: "date", description: "Date", type: FieldType.datepicker, required: true, value: "", length: 4, data: null, minlength: "0", maxlength: "10", step: 2 },
-        { field: "note", description: "Note", type: FieldType.textarea, required: false, value: "", length: 200, data: null, minlength: "0", maxlength: "1000", step: 3 },
+        { field: "material", description: "Material", type: IFieldType.textbox, required: true, value: "100-002", length: 18, data: null, minlength: "6", maxlength: "18", step: 1, valid: false },
+        { field: "plant", description: "Plant", type: IFieldType.select, required: true, value: "1000", length: 4, data: [ "1000", "2000", "3000"], minlength: "0", maxlength: "4", step: 1, valid: false },
+        { field: "storageLoc", description: "Storage location", type: IFieldType.select, required: true, value: "", length: 4, data: [ "1001", "1002", "1003"], minlength: "0", maxlength: "4", step: 2, valid: false },
+//        { field: "date", description: "Date", type: IFieldType.datepicker, required: true, value: "", length: 4, data: null, minlength: "0", maxlength: "10", step: 2, valid: false },
+        { field: "note", description: "Note", type: IFieldType.textarea, required: false, value: "", length: 200, data: null, minlength: "0", maxlength: "1000", step: 3, valid: false },
       ], 
-//      steps: [{ step: "1" }, { step: "2" }, { step: "3" }],
       steps: [ "1", "2", "3" ],
+      repeat: true,
     },
     { method: "Z_METHOD_4", fields: [
-        { field: "material", description: "Material", type: FieldType.textbox, required: true, value: "100-001", length: 18, data: null, minlength: "0", maxlength: "18", step: 1 },
+        { field: "material", description: "Material", type: IFieldType.textbox, required: true, value: "100-001", length: 18, data: null, minlength: "0", maxlength: "18", step: 1, valid: false },
       ], 
-//      steps: [{ step: "1" }],
       steps: [ "1" ],
+      repeat: false,
     },
   ];
-  currentItem: MenuItem = null;
-  currentAction: MenuAction = null;
-  currentMethod: MethodAction = null;
+  currentItem: IMenuItem = null;
+  currentAction: IMenuAction = null;
+  currentMethod: IMethodAction = null;
   currentSteps: number = 0;
   loginService: LoginService;
 
   constructor( loginService: LoginService, private dialogService: DialogService ) { 
     this.loginService = loginService;
+    this.defaultMethods = JSON.parse(JSON.stringify(this.methods));  // deep copy, not a reference
   }
   
   getCurrentMenu() : Array<any> {
@@ -86,7 +88,7 @@ export class MenuService {
     return res;
   }
   
-  goToNextMenu( currItem: MenuItem ) { 
+  goToNextMenu( currItem: IMenuItem ) { 
     this.parent = currItem.item; 
     this.currentItem = currItem;
     this.getCurrentMenu();

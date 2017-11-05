@@ -1,9 +1,9 @@
-import { FieldType } from './field-type.enum';
+import { IFieldType } from './field-type.enum';
 
-export interface MethodField {
+export interface IMethodField {
   field: string;
   description: string;
-  type: FieldType;
+  type: IFieldType;
   required: boolean;
   value: any; //valore da proporre
   length: number;
@@ -11,4 +11,5 @@ export interface MethodField {
   minlength: string;
   maxlength: string;
   step: number;
+  valid: boolean;
 }

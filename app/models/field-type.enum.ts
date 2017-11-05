@@ -1,4 +1,4 @@
-export enum FieldType {
+export enum IFieldType {
    email = 1,
    password = 2,
    textbox = 3,

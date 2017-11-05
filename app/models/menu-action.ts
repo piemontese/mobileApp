@@ -1,4 +1,4 @@
-export interface MenuAction { 
+export interface IMenuAction { 
   parent: string;
   item: string;
   title: string;

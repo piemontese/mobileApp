@@ -33,7 +33,8 @@
              style="margin-top: -20px; padding-bottom: 20px;">
   <!--            <button mat-button matStepperNext><mat-icon>arrow_forward</mat-icon></button>-->
           <button mat-button 
-                  (click)="currentStep = currentStep + 1">
+                  (click)="currentStep = currentStep + 1"
+                  [disabled]="!isStepValid(currentStep)">
             <mat-icon>arrow_forward</mat-icon></button>
         </div>
       </div>
@@ -44,7 +45,8 @@
         <button mat-raised-button 
                 color="primary" 
                 (click)="currentStep=0; execAction()"
-                style="margin-left: 10px;">OK</button>
+                style="margin-left: 10px;"
+                [disabled]="!isStepValid(currentStep)">OK</button>
       </div>
 <!--        </mat-step>-->
     </div>

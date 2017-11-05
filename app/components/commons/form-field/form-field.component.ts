@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { DateAdapter, NativeDateAdapter } from '@angular/material';
 
-import { FieldType } from '../../../models/field-type.enum';
-import { MethodField } from '../../../models/method-field';
+import { IFieldType } from '../../../models/field-type.enum';
+import { IMethodField } from '../../../models/method-field';
 import { DialogService } from '../../../services/dialog.service';
 
 @Component({
@@ -14,7 +14,7 @@ import { DialogService } from '../../../services/dialog.service';
 export class FormFieldComponent implements OnInit {
 //  @Input() field : MethodField;
   @Input() field : any;
-  fieldType = FieldType;
+  fieldType = IFieldType;
   value: FormControl;
   
   constructor( private dialogService: DialogService, private dateAdapter: DateAdapter<NativeDateAdapter> ) { 
@@ -23,6 +23,7 @@ export class FormFieldComponent implements OnInit {
 
   setValue( value: any ) {
     this.field.value = this.value.value;  //value;
+    this.field.valid = !this.value.invalid; 
   }
 
   getErrorMessage() {
@@ -33,7 +34,6 @@ export class FormFieldComponent implements OnInit {
   }
 
   ngOnInit() {
-    debugger;
     if ( this.field.required )
       this.value = new FormControl('', [ Validators.required, 
                                          Validators.minLength(this.field.minlength), 
@@ -44,6 +44,7 @@ export class FormFieldComponent implements OnInit {
                                          Validators.maxLength(this.field.maxlength) 
                                        ]);
     this.value.setValue(this.field.value);
+    this.field.valid = !this.value.invalid; 
   }
 
   ngOnDestroy() {

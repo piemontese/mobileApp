@@ -1,9 +1,9 @@
-import { MethodField } from './method-field';
+import { IMethodField } from './method-field';
 
-export interface MethodAction { 
-  method: string;
-  fields: MethodField[];
-//  steps: Steps[]; //per mat-stepper
-  steps: string[];
+export interface IMethodAction { 
+  method: string;           // webservice method
+  fields: IMethodField[];   // list of method fields
+  steps: string[];          // 
+  repeat: boolean;          // repeat action or return to menu
 };
 
