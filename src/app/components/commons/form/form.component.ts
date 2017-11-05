@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { FieldType } from '../../../data/field-type.enum';
-import { MethodField } from '../../../data/method-field';
+import { IFieldType } from '../../../models/field-type.enum';
+import { IMethodField } from '../../../models/method-field';
 import { FieldStepPipe } from '../../../pipes/field-step.pipe';
 import { DialogService } from '../../../services/dialog.service';
 
@@ -24,7 +24,25 @@ export class FormComponent implements OnInit {
     this.currentFields = [];
     if ( index+1 === this.menuService.currentMethod.fields[index].step )
       this.currentFields = fieldStepPipe.transform(this.menuService.currentMethod.fields, this.currentStep+1);
+//    this.setStepValid();
     return this.currentFields;
+  }
+  
+  setStepValid() { 
+    this.menuService.currentMethod.steps[this.currentStep].valid = true;
+    for ( let i=0; i<this.currentFields.length; i++ )
+      if ( !this.currentFields[i].valid )         
+        this.menuService.currentMethod.steps[this.currentStep].valid = false;
+  }
+  
+  isStepValid( step: number ) { 
+//    return this.menuService.currentMethod.steps[step].valid;
+    let fieldStepPipe = new FieldStepPipe;
+    let fields = fieldStepPipe.transform(this.menuService.currentMethod.fields, step+1);
+    for ( let i=0; i<fields.length; i++ )
+      if ( !fields[i].valid )         
+        return false;
+    return true;
   }
   
   execAction() { 
@@ -41,7 +59,13 @@ export class FormComponent implements OnInit {
                                { caption: "OK", color: "primary", close: true }
                              ]  // buttons 
     );
-    this.menuService.goToPrevMenu();
+    if ( this.menuService.currentMethod.repeat ) { 
+//      this.menuService.methods = this.menuService.defaultMethods;
+      this.menuService.methods = JSON.parse(JSON.stringify(this.menuService.defaultMethods));  // deep copy, not a reference
+      this.currentStep = 0;
+    }
+    else
+      this.menuService.goToPrevMenu();
   }
 
   ngOnInit() {

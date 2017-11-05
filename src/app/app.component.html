@@ -7,7 +7,7 @@
 <!--
   </div>
 -->
-  <span style="margin-top: -15px; margin-left: 10px;" *ngIf="loginService.isLogged()">Nome Cognome</span>
+  <span style="margin-top: -15px; margin-left: 10px;" *ngIf="loginService.isLogged()">{{loginService.user.firstName}} {{loginService.user.lastName}}</span>
 
   <mat-toolbar-row>
     <img width="60" src="" style="margin-left: -10px;"/>

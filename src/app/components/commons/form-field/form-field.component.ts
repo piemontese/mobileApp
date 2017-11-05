@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { DateAdapter, NativeDateAdapter } from '@angular/material';
 
-import { FieldType } from '../../../data/field-type.enum';
-import { MethodField } from '../../../data/method-field';
+import { IFieldType } from '../../../models/field-type.enum';
+import { IMethodField } from '../../../models/method-field';
 import { DialogService } from '../../../services/dialog.service';
 
 @Component({
@@ -13,17 +14,37 @@ import { DialogService } from '../../../services/dialog.service';
 export class FormFieldComponent implements OnInit {
 //  @Input() field : MethodField;
   @Input() field : any;
-  fieldType = FieldType;
+  fieldType = IFieldType;
+  value: FormControl;
   
   constructor( private dialogService: DialogService, private dateAdapter: DateAdapter<NativeDateAdapter> ) { 
     dateAdapter.setLocale('it-IT');
   }
 
   setValue( value: any ) {
-    this.field.value = value;
+    this.field.value = this.value.value;  //value;
+    this.field.valid = !this.value.invalid; 
+  }
+
+  getErrorMessage() {
+    return this.value.hasError('required') ? 'You must enter a value' :
+        this.value.hasError('minlength') ? 'Value has to be greater or equal then ' + this.field.minlength :
+        this.value.hasError('maxlength') ? 'Value has to be greater or equal then ' + this.field.maxlength :
+        '';
   }
 
   ngOnInit() {
+    if ( this.field.required )
+      this.value = new FormControl('', [ Validators.required, 
+                                         Validators.minLength(this.field.minlength), 
+                                         Validators.maxLength(this.field.maxlength) 
+                                       ]);
+    else
+      this.value = new FormControl('', [ Validators.minLength(this.field.minlength), 
+                                         Validators.maxLength(this.field.maxlength) 
+                                       ]);
+    this.value.setValue(this.field.value);
+    this.field.valid = !this.value.invalid; 
   }
 
   ngOnDestroy() {
