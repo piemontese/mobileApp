@@ -3,7 +3,7 @@
 </div>
   <mat-dialog-content>
 <div class="dialog-content">
-  <div fxLayout="row" fxLayoutAlign="start center">
+  <div fxLayout="row" fxLayoutAlign="start center" ngShow="dialogType==='message'">
     <div *ngIf="messageType==='info'" fxFlex="16%" style="margin-left: -12px; padding-right: 25px;">
       <mat-icon color="primary">info</mat-icon>
     </div>
@@ -20,6 +20,9 @@
       </div>
     </div>
   </div>
+  <div fxLayout="row" fxLayoutAlign="start center" ngShow="dialogType==='message'">
+    <ng-template></ng-template>
+  </div>
 </div>
 </mat-dialog-content>
 <div class="dialog-actions">
@@ -28,7 +31,8 @@
             mat-raised-button 
             *ngFor="let button of buttons"  
             [color]="button.color"
-            style="padding-left: 10px;"
+            style="padding-left: 20px;"
+            (click) = "onClick(button.caption)"
             [mat-dialog-close]>{{button.caption}}</button>
   </div>
 </div>

@@ -16,7 +16,7 @@ export class FieldStepPipe implements PipeTransform {
       return value;
     }
     // filter items array, items which match and return true will be kept, false will be filtered out
-    return value.filter(value => value.step == args);
+    return value.filter(value => value.step === args);
   }
 
 }

@@ -11,22 +11,20 @@ import { LoginService } from './services/login.service';
 })
 export class AppComponent {
   title = 'app';
-  logo: string = "./images/mobileApp.jpg";
+  logo = './images/mobileApp.jpg';
   loginService: LoginService;
-  
-  constructor( private router: Router, loginService: LoginService ) 
-  {
+
+  constructor( private router: Router, loginService: LoginService ) {
     this.loginService = loginService;
   }
-  
+
   fullscreen() {
-    debugger;
 //    let docElm = document.documentElement;
 //    docElm.webkitRequestFullscreen();
     screenfull.toggle();
 //    screenfull.request();
   }
-  
+
   ngOnInit() {
 //    debugger;
 //    let docElm = document.documentElement;
@@ -34,5 +32,5 @@ export class AppComponent {
 //    screenfull.toggle();
 //    screenfull.request();
   }
-  
+
 }

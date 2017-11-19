@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 
 import { LoginService } from '../../services/login.service';
 import { MenuService } from '../../services/menu.service';
@@ -12,13 +12,14 @@ import { MenuService } from '../../services/menu.service';
 export class MenuComponent implements OnInit {
   loginService: LoginService;
   menuService: MenuService;
-  currentStep: number = 0;
+  currentStep = 0;
 
   constructor( private router: Router, loginService: LoginService, menuService: MenuService ) {
     this.loginService = loginService;
     this.menuService = menuService;
-    if ( !this.loginService.isLogged() )
-      this.router.navigate(['login']); 
+    if ( !this.loginService.isLogged() ) {
+      this.router.navigate(['login']);
+    }
   }
 
   ngOnInit() {

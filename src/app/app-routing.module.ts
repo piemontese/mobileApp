@@ -5,8 +5,9 @@ import { LoginComponent } from './components/login/login.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { ThemesComponent } from './components/themes/themes.component';
+import { DialogComponent } from './components/commons/dialog//dialog.component';
 
-const routes: Routes = [  
+const routes: Routes = [
   {
     path: '', component: LoginComponent,
     children: []
@@ -25,6 +26,10 @@ const routes: Routes = [
   },
   {
     path: 'themes', component: ThemesComponent,
+    children: []
+  },
+  {
+    path: 'dialog', component: DialogComponent,
     children: []
   },
 ];

@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { UserData } from "../../models/user-data";
+import { UserData } from '../../models/user-data';
 import { LoginService } from '../../services/login.service';
 
 @Component({
@@ -12,10 +12,10 @@ import { LoginService } from '../../services/login.service';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   userData: UserData;
-  user: string = "";
-  password: string = "";
+  user = '';
+  password = '';
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder, private loginService: LoginService ) { 
+  constructor( @Inject(FormBuilder) fb: FormBuilder, private loginService: LoginService ) {
     this.form = fb.group({
       name: fb.group({
         user: ['', [Validators.required, Validators.minLength(4)]],
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.loginService.login( btoa(this.user), btoa(this.password) );
   }
-  
+
   ngOnInit() {
   }
 

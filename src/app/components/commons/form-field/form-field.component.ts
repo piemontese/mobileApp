@@ -13,17 +13,17 @@ import { DialogService } from '../../../services/dialog.service';
 })
 export class FormFieldComponent implements OnInit {
 //  @Input() field : MethodField;
-  @Input() field : any;
+  @Input() field: any;
   fieldType = IFieldType;
   value: FormControl;
-  
-  constructor( private dialogService: DialogService, private dateAdapter: DateAdapter<NativeDateAdapter> ) { 
+
+  constructor( private dialogService: DialogService, private dateAdapter: DateAdapter<NativeDateAdapter> ) {
     dateAdapter.setLocale('it-IT');
   }
 
   setValue( value: any ) {
-    this.field.value = this.value.value;  //value;
-    this.field.valid = !this.value.invalid; 
+    this.field.value = this.value.value;
+    this.field.valid = !this.value.invalid;
   }
 
   getErrorMessage() {
@@ -34,17 +34,18 @@ export class FormFieldComponent implements OnInit {
   }
 
   ngOnInit() {
-    if ( this.field.required )
-      this.value = new FormControl('', [ Validators.required, 
-                                         Validators.minLength(this.field.minlength), 
-                                         Validators.maxLength(this.field.maxlength) 
+    if ( this.field.required ) {
+      this.value = new FormControl('', [ Validators.required,
+                                         Validators.minLength(this.field.minlength),
+                                         Validators.maxLength(this.field.maxlength)
                                        ]);
-    else
-      this.value = new FormControl('', [ Validators.minLength(this.field.minlength), 
-                                         Validators.maxLength(this.field.maxlength) 
+    } else {
+      this.value = new FormControl('', [ Validators.minLength(this.field.minlength),
+                                         Validators.maxLength(this.field.maxlength)
                                        ]);
+    }
     this.value.setValue(this.field.value);
-    this.field.valid = !this.value.invalid; 
+    this.field.valid = !this.value.invalid;
   }
 
   ngOnDestroy() {
