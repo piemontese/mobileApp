@@ -13,60 +13,73 @@ import { DialogService } from '../../../services/dialog.service';
 })
 export class FormComponent implements OnInit {
   @Input() menuService: any;
-  currentStep: number = 0;
+  currentStep = 0;
   currentFields: Array<any> = [];
   form: FormGroup;
 
   constructor( private dialogService: DialogService ) { }
 
-  getCurrentFields( index: number ) { 
-    let fieldStepPipe = new FieldStepPipe;
+  getCurrentFields( index: number ) {
+    const fieldStepPipe = new FieldStepPipe;
     this.currentFields = [];
-    if ( index+1 === this.menuService.currentMethod.fields[index].step )
-      this.currentFields = fieldStepPipe.transform(this.menuService.currentMethod.fields, this.currentStep+1);
+    if ( (index + 1) === this.menuService.currentMethod.fields[index].step ) {
+      this.currentFields = fieldStepPipe.transform(this.menuService.currentMethod.fields, this.currentStep + 1);
+    }
 //    this.setStepValid();
     return this.currentFields;
   }
-  
-  setStepValid() { 
+
+  setStepValid() {
     this.menuService.currentMethod.steps[this.currentStep].valid = true;
-    for ( let i=0; i<this.currentFields.length; i++ )
-      if ( !this.currentFields[i].valid )         
+    for ( let i = 0; i < this.currentFields.length; i++ ) {
+      if ( !this.currentFields[i].valid ) {
         this.menuService.currentMethod.steps[this.currentStep].valid = false;
+      }
+    }
   }
-  
-  isStepValid( step: number ) { 
+
+  isStepValid( step: number ) {
 //    return this.menuService.currentMethod.steps[step].valid;
-    let fieldStepPipe = new FieldStepPipe;
-    let fields = fieldStepPipe.transform(this.menuService.currentMethod.fields, step+1);
-    for ( let i=0; i<fields.length; i++ )
-      if ( !fields[i].valid )         
+    const fieldStepPipe = new FieldStepPipe;
+    const fields = fieldStepPipe.transform(this.menuService.currentMethod.fields, step + 1);
+    for ( let i = 0; i < fields.length; i++ ) {
+      if ( !fields[i].valid ) {
         return false;
+      }
+    }
     return true;
   }
-  
-  execAction() { 
-    let msg: Array<string> = [];
-    msg[0] = "Eseguito metodo " + this.menuService.currentAction.method;
-    for ( let i=0; i<this.menuService.currentMethod.fields.length; i++ )
-      msg[i+1] = this.menuService.currentMethod.fields[i].field + " = " + this.menuService.currentMethod.fields[i].value;
-    this.dialogService.open( "Azione " + this.menuService.currentAction.title, // title
-                             msg,  //[ "Eseguito metodo " + this.menuService.currentAction.method ],  // message
-                             "message",   // dialog type
-                             "info",   // message type
+
+  execAction() {
+    const msg: Array<string> = [];
+    msg[0] = 'Eseguito metodo ' + this.menuService.currentAction.method;
+    for ( let i = 0; i < this.menuService.currentMethod.fields.length; i++ ) {
+      msg[i + 1] = this.menuService.currentMethod.fields[i].field + ' = ' + this.menuService.currentMethod.fields[i].value;
+    }
+    this.dialogService.open( 'Azione ' + this.menuService.currentAction.title, // title
+                             msg,  // [ "Eseguito metodo " + this.menuService.currentAction.method ],  // message
+                             'message',   // dialog type
+                             'info',   // message type
                              [
 //                               { caption: "Cancel", color: "", close: false },
-                               { caption: "OK", color: "primary", close: true }
-                             ]  // buttons 
+                               { caption: 'OK', color: 'primary', close: true },
+                             ],  // buttons
+                             this.dialogCallback
     );
-    if ( this.menuService.currentMethod.repeat ) { 
-//      this.menuService.methods = this.menuService.defaultMethods;
-      this.menuService.methods = JSON.parse(JSON.stringify(this.menuService.defaultMethods));  // deep copy, not a reference
-      this.currentStep = 0;
-    }
-    else
-      this.menuService.goToPrevMenu();
+//    this.currentStep = 0;
+//    this.menuService.methods = JSON.parse(JSON.stringify(this.menuService.defaultMethods));  // deep copy, not a reference
+//    if ( !this.menuService.currentMethod.repeat ) {
+//      this.menuService.goToPrevMenu();
+//    }
   }
+
+  dialogCallback = ( response: String ) => {
+    this.currentStep = 0;
+    this.menuService.methods = JSON.parse(JSON.stringify(this.menuService.defaultMethods));  // deep copy, not a reference
+    if ( !this.menuService.currentMethod.repeat ) {
+      this.menuService.goToPrevMenu();
+    }
+ }
 
   ngOnInit() {
     this.currentStep = 0;

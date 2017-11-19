@@ -36,9 +36,9 @@ import { FormFieldComponent } from './components/commons/form-field/form-field.c
 import { DialogComponent } from './components/commons/dialog/dialog.component';
 
   // App service modules
-import { LoginService } from "./services/login.service";
-import { MenuService } from "./services/menu.service";
-import { DialogService } from "./services/dialog.service";
+import { LoginService } from './services/login.service';
+import { MenuService } from './services/menu.service';
+import { DialogService } from './services/dialog.service';
 import { FullscreenDirective } from './directives/fullscreen.directive';
 import { FieldPipe } from './pipes/field.pipe';
 import { FieldStepPipe } from './pipes/field-step.pipe';

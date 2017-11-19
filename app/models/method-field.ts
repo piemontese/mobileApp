@@ -5,9 +5,10 @@ export interface IMethodField {
   description: string;
   type: IFieldType;
   required: boolean;
-  value: any; //valore da proporre
+  value: any; // valore da proporre
+  defaultValue: any; // valore da proporre
   length: number;
-  data: Array<any>; //elenco ad es. autocostruzione  
+  data: Array<any>; // elenco ad es. autocostruzione
   minlength: string;
   maxlength: string;
   step: number;
