@@ -33,6 +33,9 @@ export class FormFieldComponent implements OnInit {
         '';
   }
 
+  /**
+   * ngOnInit
+   */
   ngOnInit() {
     if ( this.field.required ) {
       this.value = new FormControl('', [ Validators.required,

@@ -41,6 +41,7 @@ export class DialogService {
     this.dialogRef.componentInstance.buttons = buttons;
     this.dialogRef.componentInstance.routeTo = routeTo;
     this.dialogRef.componentInstance.callback = callback;
+    const a = 1;
 
 //    return dialogRef.afterClosed();
 
