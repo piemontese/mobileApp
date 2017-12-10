@@ -31,10 +31,11 @@
 
       </mat-card-content>
       <mat-card-actions fxLayout="row" fxLayout.xs="row" fxLayoutAlign="center center">
+        <button mat-raised-button
+                [routerLink]="['/menu']">Cancel</button>
         <button mat-raised-button 
                 color="primary"
                 [routerLink]="['/menu']">Save</button>
-        <button mat-raised-button>Cancel</button>
       </mat-card-actions>      
     </mat-card>
   </div>

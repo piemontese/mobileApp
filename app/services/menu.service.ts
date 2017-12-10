@@ -5,6 +5,7 @@ import { IMethodField } from '../models/method-field';
 import { IMenuItem } from '../models/menu-item';
 import { IMenuAction } from '../models/menu-action';
 import { IMethodAction } from '../models/method-action';
+import { TextboxType } from '../models/textbox-type';
 
 import { LoginService } from '../services/login.service';
 import { DialogService } from '../services/dialog.service';
@@ -37,32 +38,32 @@ export class MenuService {
   defaultMethods: IMethodAction[] = [];
   methods: IMethodAction[] = [
     { method: 'Z_METHOD_1_1_1', fields: [
-        { field: 'plant', description: 'Plant', type: IFieldType.select, inputType: '', required: true, value: '1000', defaultValue: '1000', length: 4, data: [ '', '1000', '2000', '3000'], minlength: '0', maxlength: '4', step: 1, valid: false },
-        { field: 'storageLoc', description: 'Storage location', type: IFieldType.select, inputType: '', required: true, value: '2000', defaultValue: '2000', length: 4, data: [ '1000', '2000', '3000', '4000'], minlength: '0', maxlength: '4', step: 1, valid: false },
+        { field: 'plant', description: 'Plant', type: IFieldType.select, inputType: null, required: true, value: '1000', defaultValue: '1000', length: 4, data: [ '', '1000', '2000', '3000'], minlength: '0', maxlength: '4', step: 1, valid: false },
+        { field: 'storageLoc', description: 'Storage location', type: IFieldType.select, inputType: null, required: true, value: '2000', defaultValue: '2000', length: 4, data: [ '1000', '2000', '3000', '4000'], minlength: '0', maxlength: '4', step: 1, valid: false },
       ],
       steps: [ '1' ],
       repeat: false,
     },
     { method: 'Z_METHOD_3', fields: [
-        { field: 'material', description: 'Material', type: IFieldType.textbox, inputType: 'text', required: true, value: '100-002', defaultValue: '100-002', length: 18, data: null, minlength: '6', maxlength: '18', step: 1, valid: false },
-        { field: 'plant', description: 'Plant', type: IFieldType.select, inputType: '', required: true, value: '1000', defaultValue: '1000', length: 4, data: [ '1000', '2000', '3000'], minlength: '0', maxlength: '4', step: 1, valid: false },
-        { field: 'storageLoc', description: 'Storage location', type: IFieldType.select, inputType: '', required: true, value: '', defaultValue: '', length: 4, data: [ '1001', '1002', '1003'], minlength: '0', maxlength: '4', step: 2, valid: false },
-//        { field: 'date', description: 'Date', type: IFieldType.datepicker,  inputType: '',required: true, value: '', defaultValue: '', length: 4, data: null, minlength: '0', maxlength: '10', step: 2, valid: false },
-        { field: 'note', description: 'Note', type: IFieldType.textarea, inputType: '', required: false, value: '', defaultValue: '', length: 200, data: null, minlength: '0', maxlength: '1000', step: 3, valid: false },
+        { field: 'material', description: 'Material', type: IFieldType.textbox, inputType: TextboxType.text, required: true, value: '100-002', defaultValue: '100-002', length: 18, data: null, minlength: '6', maxlength: '18', step: 1, valid: false },
+        { field: 'plant', description: 'Plant', type: IFieldType.select, inputType: null, required: true, value: '1000', defaultValue: '1000', length: 4, data: [ '1000', '2000', '3000'], minlength: '0', maxlength: '4', step: 1, valid: false },
+        { field: 'storageLoc', description: 'Storage location', type: IFieldType.select, inputType: null, required: true, value: '', defaultValue: '', length: 4, data: [ '1001', '1002', '1003'], minlength: '0', maxlength: '4', step: 2, valid: false },
+//        { field: 'date', description: 'Date', type: IFieldType.datepicker,  inputType: null,required: true, value: '', defaultValue: '', length: 4, data: null, minlength: '0', maxlength: '10', step: 2, valid: false },
+        { field: 'note', description: 'Note', type: IFieldType.textarea, inputType: null, required: false, value: '', defaultValue: '', length: 200, data: null, minlength: '0', maxlength: '1000', step: 3, valid: false },
       ],
       steps: [ '1', '2', '3' ],
       repeat: true,
     },
     { method: 'Z_METHOD_2_1', fields: [
-        { field: 'user', description: 'User', type: IFieldType.textbox, inputType: 'text', required: true, value: '', defaultValue: '', length: 20, data: null, minlength: '5', maxlength: '20', step: 1, valid: false },
-        { field: 'pwd', description: 'Password', type: IFieldType.textbox, inputType: 'password', required: true, value: '', defaultValue: '', length: 20, data: null, minlength: '10', maxlength: '20', step: 1, valid: false },
+        { field: 'user', description: 'User', type: IFieldType.textbox, inputType: TextboxType.text, required: true, value: '', defaultValue: '', length: 20, data: null, minlength: '5', maxlength: '20', step: 1, valid: false },
+        { field: 'pwd', description: 'Password', type: IFieldType.textbox, inputType: TextboxType.password, required: true, value: '', defaultValue: '', length: 20, data: null, minlength: '10', maxlength: '20', step: 1, valid: false },
       ],
       steps: [ '1' ],
       repeat: false,
     },
     { method: 'Z_METHOD_4', fields: [
-        { field: 'material', description: 'Material', type: IFieldType.textbox, inputType: 'text', required: true, value: '100-001', defaultValue: '100-001', length: 18, data: null, minlength: '0', maxlength: '18', step: 1, valid: false },
-        { field: 'quantity', description: 'Quantity', type: IFieldType.textbox, inputType: 'number', required: true, value: '0', defaultValue: '0', length: 10, data: null, minlength: '1', maxlength: '10', step: 1, valid: false },
+        { field: 'material', description: 'Material', type: IFieldType.textbox, inputType: TextboxType.text, required: true, value: '100-001', defaultValue: '100-001', length: 18, data: null, minlength: '0', maxlength: '18', step: 1, valid: false },
+        { field: 'quantity', description: 'Quantity', type: IFieldType.textbox, inputType: TextboxType.number, required: true, value: '0', defaultValue: '0', length: 10, data: null, minlength: '1', maxlength: '10', step: 1, valid: false },
       ],
       steps: [ '1' ],
       repeat: false,

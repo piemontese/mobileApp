@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 
 import { UserData } from '../models/user-data';
 import { IUser } from '../models/user';
 import { DialogService } from '../services/dialog.service';
+import { IFieldType } from '../models/field-type.enum';
+import { TextboxType } from '../models/textbox-type';
+import { IMethodField } from '../models/method-field';
 
 @Injectable()
 export class LoginService {
@@ -16,6 +19,11 @@ export class LoginService {
     { user: 'user2', password: 'dXNlcjI=', firstName: 'Matteo', lastName: 'Rossi' , auths: [ 'auth1', 'auth4', 'auth5'] },
     { user: 'user3', password: 'dXNlcjM=', firstName: 'Giuseppe', lastName: 'Verdi' , auths: [ 'auth4', 'auth5'] },
   ];
+  public fieldType: IFieldType;
+  public fields: IMethodField[] = [
+        { field: 'user', description: 'User', type: IFieldType.textbox, inputType: TextboxType.text, required: true, value: '', defaultValue: '', length: 20, data: null, minlength: '5', maxlength: '20', step: 1, valid: false },
+        { field: 'pwd', description: 'Password', type: IFieldType.textbox, inputType: TextboxType.password, required: true, value: '', defaultValue: '', length: 20, data: null, minlength: '5', maxlength: '20', step: 1, valid: false },
+      ];
 
   constructor( private router: Router, private dialogService: DialogService ) { }
 
