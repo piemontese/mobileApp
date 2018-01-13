@@ -4,6 +4,7 @@ export interface IMethodField {
   field: string;
   description: string;
   type: IFieldType;
+  inputType: string;
   required: boolean;
   value: any; // valore da proporre
   defaultValue: any; // valore da proporre

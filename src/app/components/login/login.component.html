@@ -1,4 +1,53 @@
-    <div class="full-height">
+<div fxLayout="column" fxLayoutAlign="center center">
+	<div class="action-card-title" 
+		   style="padding-bottom: 20px;">
+  	Login
+	</div>
+</div>
+ <br/>
+ <form [formGroup]="form" class="full-width">
+   <div formGroupName="name">
+   <div fxLayout="column" fxLayoutAlign="center center">
+	  		<mat-form-field class="input-container">
+          <input formControlName="user" 
+           			 matInput 
+          			 placeholder="User" 
+ 		             i18n-matTooltip matTooltip="User" matTooltipPosition="below" 
+           			 id="user" value="" 
+           			 class="form-control" 
+           			 [(ngModel)]="user" 
+           			 name="user" 
+           			 [autofocus]>
+			  </mat-form-field>
+			  <mat-form-field class="input-container">
+	        <input formControlName="password" 
+           			 matInput 
+           			 placeholder="Password" 
+ 	               i18n-matTooltip matTooltip="Password" matTooltipPosition="below" 
+           			 type="password" 
+           			 id="password" value="" 
+           			 class="form-control" 
+           			 [(ngModel)]="password" 
+           			 name="password">
+			  </mat-form-field>
+		    <br/>
+        <button mat-raised-button [disabled]="form.status==='INVALID'" 
+                color="primary" 
+                i18n-matTooltip matTooltip="Login" matTooltipPosition="below" 
+                (click)="login()" 
+                class="input-container" 
+                i18n>Login</button>
+      </div>
+      </div>
+      <br/>
+    </form>
+
+
+
+
+
+<!-- 
+    <div class="full-width">
       <div fxFlexFill fxLayout="column" fxLayoutAlign="center center">
         <mat-card class="mat-elevation-z5">
           <mat-card-title>
@@ -11,38 +60,42 @@
               <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">
                 <div class="input-control">
                   <mat-input-container>
-                    <input formControlName="user" matInput placeholder="User" id="user" value="" class="form-control" [(ngModel)]="user" name="user" [autofocus]>
+                    <input formControlName="user" 
+                    			 matInput 
+                    			 placeholder="User" 
+ 		                       i18n-matTooltip matTooltip="User" matTooltipPosition="below" 
+                    			 id="user" value="" 
+                    			 class="form-control" 
+                    			 [(ngModel)]="user" 
+                    			 name="user" 
+                    			 [autofocus]>
                   </mat-input-container>
                 </div>
                 <div class="input-control">
                   <mat-input-container>
-                    <input formControlName="password" matInput placeholder="Password" type="password" id="password" value="" class="form-control" [(ngModel)]="password" name="password">
+                    <input formControlName="password" 
+                    			 matInput 
+                    			 placeholder="Password" 
+ 		                       i18n-matTooltip matTooltip="Password" matTooltipPosition="below" 
+                    			 type="password" 
+                    			 id="password" value="" 
+                    			 class="form-control" 
+                    			 [(ngModel)]="password" 
+                    			 name="password">
                   </mat-input-container>
                 </div>
                 <br/>
-                <!--<mat-card-actions> -->
-<!--
                 <button mat-raised-button [disabled]="form.status==='INVALID'" 
                         color="primary" 
-                        i18n-mdTooltip mdTooltip="Login" mdTooltipPosition="below" (click)="login()" type="submit" 
-                        class="input-control" i18n appFullscreen>Login</button>
--->
-                <button mat-raised-button [disabled]="form.status==='INVALID'" 
-                        color="primary" 
-                        i18n-mdTooltip mdTooltip="Login" mdTooltipPosition="below" (click)="login()" type="submit" 
-                        class="input-control" i18n>Login</button>
-                <!-- </mat-card-actions> -->
+                        i18n-matTooltip matTooltip="Login" matTooltipPosition="below" 
+                        (click)="login()" 
+                        type="submit" 
+                        class="full-width input-control" i18n>Login</button>
               </div>
             </div>
             <br/>
           </form>
-          <!--
-          <app-form></app-form>
-          -->
-          <!--
-          <p>Value: {{ form.value | json }}</p>
-          <p>Validation status: {{ form.status }}</p>
-          -->
         </mat-card>
       </div>
     </div>
+ -->

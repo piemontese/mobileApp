@@ -23,6 +23,7 @@ import { MatNativeDateModule } from '@angular/material';
   // Thirdy part modules
 import 'hammerjs';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import 'jquery';
 
   // App modules
 import { AppRoutingModule } from './app-routing.module';

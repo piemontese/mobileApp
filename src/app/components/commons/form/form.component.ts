@@ -77,7 +77,7 @@ export class FormComponent implements OnInit {
     this.currentStep = 0;
     this.menuService.methods = JSON.parse(JSON.stringify(this.menuService.defaultMethods));  // deep copy, not a reference
     if ( !this.menuService.currentMethod.repeat ) {
-      this.menuService.goToPrevMenu();
+      this.menuService.goToPrevMenu(true);
     }
  }
 

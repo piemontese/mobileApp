@@ -3,13 +3,14 @@
   <input class="form-field"
          matInput 
          [formControl]="value" 
+         [type]="field.inputType"
          name="{{field.field}}"
          value={{field.value}}
          [minLength]="field.minlength"
          [maxLength]="field.maxlength" 
          placeholder={{field.description}}
          (keyup)="setValue(value.value)"
-         required={{field.required}}>
+         [required]="field.required">
   <mat-hint align="end">{{value.value.length || 0}}/{{field.maxlength}}</mat-hint>
 <!--  <mat-error *ngIf="val.value?.length < 10">{{field.description}} length must be greater than 10</mat-error>-->
   <mat-error>{{getErrorMessage()}}</mat-error>
