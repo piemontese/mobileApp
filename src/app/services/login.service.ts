@@ -87,9 +87,21 @@ export class LoginService {
           so.checkLogin(user, password);
         },
         error: function (data, status, error) {
-          alert(status + ' - ' + error);
+          debugger;
+//          alert(status + ' - ' + error);
+          so.dialogService.open( 'Server connection',   // title
+                                 ['Server unavailable',
+                                  'Running in local demo mode'],  // array of messages
+                                 'message',   // dialog type
+                                 'error',   // message type
+                                 [
+                                 { caption: 'OK', color: 'primary', close: true },
+    //                             { caption: "Cancel", color: "warn", close: true }
+                               ]  // buttons
+          );
           so.response = null;
           so.progress = false;
+          so.checkLogin(user, password);
         }
     });
   }
@@ -100,6 +112,7 @@ export class LoginService {
         this.user = this.users[i];
         this.logged = true;
         console.log(this.response);
+//        this.menuService.setMenu();
         this.router.navigate(['menu']);
         return;
       }

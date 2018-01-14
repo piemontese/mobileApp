@@ -15,16 +15,16 @@ export class MenuService {
   fieldType: IFieldType;
   parent = '';
   menu: IMenuItem[] = [
-    { parent: '', item: 'item_1', description: 'Item 1', action: 'item_1_1', auth: 'auth1', visible: false },
-    { parent: '', item: 'item_2', description: 'Item 2', action: 'item_2_1', auth: 'auth2', visible: false },
-    { parent: '', item: 'item_3', description: 'Item 3', action: 'item_3_1', auth: 'auth3', visible: false },
-    { parent: '', item: 'item_4', description: 'Item 4', action: 'item_4_1', auth: 'auth4', visible: false },
-    { parent: '', item: 'item_5', description: 'Item 5', action: 'item_5_1', auth: 'auth5', visible: false },
-    { parent: 'item_1', item: 'item_1_1', description: 'Item 1 1', action: 'item_1_1_1', auth: 'auth1', visible: false },
-    { parent: 'item_1', item: 'item_1_2', description: 'Item 1 2', action: 'item_1_2_1', auth: 'auth1', visible: false},
-    { parent: 'item_1', item: 'item_1_3', description: 'Item 1 3', action: 'item_1_3_1', auth: 'auth1', visible: false},
-    { parent: 'item_2', item: 'item_2_1', description: 'Item 2 1', action: 'item_2_1_1', auth: 'auth2', visible: false},
-    { parent: 'item_1_1', item: 'item_1_1_1', description: 'Item 1 1 1', action: 'item_1_1_1_1', auth: 'auth1', visible: false },
+    { parent: '', item: 'item_1', description: 'Item 1', action: 'item_1_1', auth: 'auth1', visible: 'false' },
+    { parent: '', item: 'item_2', description: 'Item 2', action: 'item_2_1', auth: 'auth2', visible: 'false' },
+    { parent: '', item: 'item_3', description: 'Item 3', action: 'item_3_1', auth: 'auth3', visible: 'false' },
+    { parent: '', item: 'item_4', description: 'Item 4', action: 'item_4_1', auth: 'auth4', visible: 'false' },
+    { parent: '', item: 'item_5', description: 'Item 5', action: 'item_5_1', auth: 'auth5', visible: 'false' },
+    { parent: 'item_1', item: 'item_1_1', description: 'Item 1 1', action: 'item_1_1_1', auth: 'auth1', visible: 'false' },
+    { parent: 'item_1', item: 'item_1_2', description: 'Item 1 2', action: 'item_1_2_1', auth: 'auth1', visible: 'false'},
+    { parent: 'item_1', item: 'item_1_3', description: 'Item 1 3', action: 'item_1_3_1', auth: 'auth1', visible: 'false'},
+    { parent: 'item_2', item: 'item_2_1', description: 'Item 2 1', action: 'item_2_1_1', auth: 'auth2', visible: 'false'},
+    { parent: 'item_1_1', item: 'item_1_1_1', description: 'Item 1 1 1', action: 'item_1_1_1_1', auth: 'auth1', visible: 'false' },
   ];
   actions: IMenuAction[] = [
     { parent: 'item_1_1_1', item: 'action_1_1_1', title: 'Action 1 1 1', method: 'Z_METHOD_1_1_1' },
@@ -83,10 +83,6 @@ export class MenuService {
 
   constructor( loginService: LoginService, private dialogService: DialogService ) {
     this.loginService = loginService;
-    debugger;
-    if ( this.loginService.response ) {
-      this.menu = this.loginService.response['ET_MENU_ITEM'];
-    }
     this.defaultMethods = JSON.parse(JSON.stringify(this.methods));  // deep copy, not a reference
   }
 
@@ -105,6 +101,16 @@ export class MenuService {
     this.getCurrentAction();
     this.getCurrentMehod();
     return res;
+  }
+
+  setMenu() {
+    if ( this.loginService.response ) {
+//      this.menu = [];
+      console.log(this.loginService.response['results']['ET_MENU_ITEM']);
+      this.menu = this.loginService.response['results']['ET_MENU_ITEM'];
+      this.actions = this.loginService.response['results']['ET_MENU_ACTION'];
+      this.defaultMethods = JSON.parse(JSON.stringify(this.methods));  // deep copy, not a reference
+    }
   }
 
   goToNextMenu( currItem: IMenuItem ) {

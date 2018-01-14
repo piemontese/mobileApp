@@ -1,60 +1,35 @@
 <mat-form-field class="form-field"
-                *ngIf="field.type===fieldType.textbox">
-  <input class="form-field"
-         matInput 
-         [formControl]="value" 
-         [type]="field.inputType"
-         name="{{field.field}}"
-         value={{field.value}}
-         [minLength]="field.minlength"
-         [maxLength]="field.maxlength" 
-         placeholder={{field.description}}
-         (keyup)="setValue(value.value)"
-         [required]="field.required">
-  <mat-hint align="end">{{value.value.length || 0}}/{{field.maxlength}}</mat-hint>
-<!--  <mat-error *ngIf="val.value?.length < 10">{{field.description}} length must be greater than 10</mat-error>-->
-  <mat-error>{{getErrorMessage()}}</mat-error>
-</mat-form-field>
+	*ngIf="field.type===fieldType.textbox"> <input
+	class="form-field" matInput [formControl]="value"
+	[type]="field.inputType" name="{{field.field}}" value={{field.value}}
+	[minLength]="field.minlength" [maxLength]="field.maxlength"
+	placeholder={{field.description}} (keyup)="setValue(value.value)"
+	[required]="field.required"> <mat-hint align="end">{{value.value.length
+|| 0}}/{{field.maxlength}}</mat-hint> <!--  <mat-error *ngIf="val.value?.length < 10">{{field.description}} length must be greater than 10</mat-error>-->
+<mat-error>{{getErrorMessage()}}</mat-error> </mat-form-field>
 
 <mat-form-field *ngIf="field.type===fieldType.textarea"
-                class="form-field">
-  <textarea [formControl]="value" 
-            (keyup)="setValue(value.value)"
-            matInput 
-            placeholder={{field.description}}
-            [required]="field.required"></textarea>
-  <mat-hint align="end">{{value.value.length || 0}}/{{field.maxlength}}</mat-hint>
-  <mat-error>{{getErrorMessage()}}</mat-error>
-</mat-form-field>
+	class="form-field"> <textarea [formControl]="value"
+	(keyup)="setValue(value.value)" matInput
+	placeholder={{field.description}} [required]="field.required"></textarea>
+<mat-hint align="end">{{value.value.length ||
+0}}/{{field.maxlength}}</mat-hint> <mat-error>{{getErrorMessage()}}</mat-error> </mat-form-field>
 
-<mat-form-field *ngIf="field.type===fieldType.select"
-                class="form-field">
-  <mat-select class="form-field"
-              [formControl]="value" 
-              placeholder={{field.description}}
-              value={{field.value}}
-              required={{field.required}}>
-    <mat-option *ngFor="let data of field.data" 
-                [value]="data"
-                (click)="setValue(data)">{{data}}</mat-option>
-  </mat-select>
-  <mat-hint align="end">{{value.value.length || 0}}/{{field.maxlength}}</mat-hint>
-  <mat-error>{{getErrorMessage()}}</mat-error>
-</mat-form-field>
+<mat-form-field *ngIf="field.type===fieldType.select" class="form-field">
+<mat-select class="form-field" [formControl]="value"
+	placeholder={{field.description}} value={{field.value}}
+	required={{field.required}}> <mat-option
+	*ngFor="let data of field.data" [value]="data" (click)="setValue(data)">{{data}}</mat-option>
+</mat-select> <mat-hint align="end">{{value.value.length ||
+0}}/{{field.maxlength}}</mat-hint> <mat-error>{{getErrorMessage()}}</mat-error> </mat-form-field>
 
 <mat-form-field *ngIf="field.type===fieldType.datepicker"
-                class="form-field">
-  <input matInput [matDatepicker]="picker" 
-         [formControl]="value" 
-         value={{field.value}}
-         [minLength]="field.minlength"
-         [maxLength]="field.maxlength" 
-         placeholder={{field.description}}
-         (click)="setValue(data)"
-         required={{field.required}}>
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-  <mat-hint align="end">{{value.value.length || 0}}/{{field.maxlength}}</mat-hint>
-  <mat-error>{{getErrorMessage()}}</mat-error>
-</mat-form-field>
+	class="form-field"> <input matInput
+	[matDatepicker]="picker" [formControl]="value" value={{field.value}}
+	[minLength]="field.minlength" [maxLength]="field.maxlength"
+	placeholder={{field.description}} (click)="setValue(data)"
+	required={{field.required}}> <mat-datepicker-toggle matSuffix
+	[for]="picker"></mat-datepicker-toggle> <mat-datepicker #picker></mat-datepicker>
+<mat-hint align="end">{{value.value.length ||
+0}}/{{field.maxlength}}</mat-hint> <mat-error>{{getErrorMessage()}}</mat-error> </mat-form-field>
 

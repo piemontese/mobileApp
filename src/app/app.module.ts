@@ -19,6 +19,7 @@ import { MatDialogModule } from '@angular/material';
 import { MatTooltipModule } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material';
 import { MatNativeDateModule } from '@angular/material';
+import { MatProgressBarModule } from '@angular/material';
 
   // Thirdy part modules
 import 'hammerjs';
@@ -79,6 +80,7 @@ import { FieldStepPipe } from './pipes/field-step.pipe';
     MatTooltipModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatProgressBarModule,
       // Thirdy part modules
     FlexLayoutModule,
       // App modules
