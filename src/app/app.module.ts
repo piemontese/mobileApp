@@ -44,6 +44,7 @@ import { DialogService } from './services/dialog.service';
 import { FullscreenDirective } from './directives/fullscreen.directive';
 import { FieldPipe } from './pipes/field.pipe';
 import { FieldStepPipe } from './pipes/field-step.pipe';
+import { DataTableComponent } from './components/commons/data-table/data-table.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { FieldStepPipe } from './pipes/field-step.pipe';
     FullscreenDirective,
     FieldPipe,
     FieldStepPipe,
+    DataTableComponent,
   ],
   imports: [
       // Angular modules

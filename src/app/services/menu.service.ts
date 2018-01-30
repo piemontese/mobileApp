@@ -109,6 +109,7 @@ export class MenuService {
       console.log(this.loginService.response['results']['ET_MENU_ITEM']);
       this.menu = this.loginService.response['results']['ET_MENU_ITEM'];
       this.actions = this.loginService.response['results']['ET_MENU_ACTION'];
+//      this.methods = this.loginService.response['results']['ET_MENU_METHOD'];
       this.defaultMethods = JSON.parse(JSON.stringify(this.methods));  // deep copy, not a reference
     }
   }
