@@ -82,7 +82,9 @@ export class LoginService {
         timeout: 6000, // sets timeout to 60 seconds
         success: function(data) {
           // console.log(data);
-          so.response = data;
+//          so.response = data;
+          const json = decodeURIComponent( JSON.stringify( data ) );
+          so.response = JSON.parse( json );
           so.progress = false;
           so.checkLogin(user, password);
         },
