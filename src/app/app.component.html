@@ -2,16 +2,49 @@
 <!--
   <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center" 
        style="width: 50px; height: 100%; margin-left: -10px; margin-top: -10px;">
---> <img width="60" src="app/images/mobileApp.png"
-	style="margin-top: 15px; margin-left: -10px;" /> <!--
+-->
+<!-- 
+	<img width="60" src="app/images/mobileApp.png"
+	style="margin-top: 15px; margin-left: -10px;" /> 
+	-->
+	<!--
   </div>
---> <span style="margin-top: -15px; margin-left: 10px;"
+	--> 
+  
+  <div fxLayout="row">
+		<div fxFlexAlign="start" fxFlexOffset="3%" fxFlex="5" [fxFlex.xs]="20" style="width: 20%;">
+			<div *ngIf="loginService.isLogged()">
+				Operatore:
+			</div>
+		</div>
+		<div fxFlexAlign="start" fxFlexOffset="3%" fxFlex="20" [fxFlex.xs]="50">
+			<div *ngIf="loginService.isLogged()">
+				&nbsp; {{loginService.user.firstName}} &nbsp; {{loginService.user.lastName}}
+			</div>
+		</div>
+  </div>
+  <div fxLayout="row">
+		<div fxFlexAlign="start" fxFlexOffset="3%" fxFlex="5" [fxFlex.xs]="20" style="width: 20%;">
+			<div *ngIf="loginService.isLogged()">Sistema:</div>
+		</div>
+		<div fxFlexAlign="start" fxFlexOffset="3%" fxFlex="20" [fxFlex.xs]="50">
+			<div *ngIf="loginService.isLogged()">Sviluppo</div>
+		</div>
+	</div>
+	
+  <!--
+	<span style="margin-top: -15px; margin-left: 10px;"
 	*ngIf="loginService.isLogged()">{{loginService.user.firstName}}
-	{{loginService.user.lastName}}</span> <mat-toolbar-row> <img
-	width="60" src="" style="margin-left: -10px;" /> <span
-	*ngIf="loginService.isLogged()"
-	style="margin-top: -5px; margin-left: 10px;">Sistema</span> <span
-	class="right-spacer"></span> <!--
+	{{loginService.user.lastName}}</span>
+	-->
+	 <mat-toolbar-row>
+	 <!-- 
+		 <img width="60" src="" style="margin-left: -10px;" /> <span
+					*ngIf="loginService.isLogged()"
+					style="margin-top: -5px; margin-left: 10px;">Sistema</span> 
+				-->
+				<span	class="right-spacer"></span> 
+	<!--
     <button mat-icon-button 
             tooltip="Toggle Fullscreen" 
             tooltipPosition="left" 

@@ -35,7 +35,7 @@
 				</div>
 			</div>
 			<div *ngIf="i===menuService.currentSteps-1 && i===currentStep"
-				fxLayout="row" fxLayoutAlign="end end" class="form-button">
+				fxLayout="row" fxLayoutAlign="center center" class="form-button">
 				<button mat-raised-button color="primary" (click)="execAction()"
 					style="margin-left: 10px;" [disabled]="!isStepValid(currentStep)">OK</button>
 			</div>
