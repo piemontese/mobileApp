@@ -4,5 +4,5 @@ export interface IMenuItem {
   description: string;
   action: string;
   auth: string;
-  visible: boolean;
+  visible: string;
 }

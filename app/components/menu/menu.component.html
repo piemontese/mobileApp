@@ -1,23 +1,20 @@
-<div fxLayout="column" 
-     fxLayout.xs="column" 
-     fxLayoutAlign="center center">
-  <button mat-raised-button 
-          class="full-width menu-button"
-          *ngIf="menuService.parent===''">Menu</button>
-  
-  <button mat-raised-button 
-          class="full-width menu-button"
-          *ngIf="menuService.parent!==''"
-          (click)="menuService.goToPrevMenu()">
-    <mat-icon>arrow_back</mat-icon> {{menuService.currentItem.description}}</button>
+<div fxLayout="column" fxLayout.xs="column"
+	fxLayoutAlign="center center">
+	<button mat-raised-button class="full-width menu-button"
+		*ngIf="menuService.parent===''">Menu</button>
 
-  <div class="full-width"
-       *ngFor="let item of menuService.getCurrentMenu()">
-    <button mat-raised-button 
-            color="primary" 
-            class="full-width menu-button"
-            (click)="menuService.goToNextMenu(item)">{{item.description}}</button>
-  </div>
+	<button mat-raised-button class="full-width menu-button"
+		*ngIf="menuService.parent!==''" (click)="menuService.goToPrevMenu()">
+		<mat-icon>arrow_back</mat-icon>
+		{{menuService.currentItem.description}}
+	</button>
+
+	<div class="full-width"
+		*ngFor="let item of menuService.getCurrentMenu()">
+		<button mat-raised-button color="primary"
+			class="full-width menu-button"
+			(click)="menuService.goToNextMenu(item)">{{item.description}}</button>
+	</div>
 </div>
 
 <app-form [menuService]="menuService"></app-form>

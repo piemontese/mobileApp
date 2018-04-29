@@ -17,16 +17,18 @@ export class DialogComponent implements OnInit {
   public title: String = '';
 //  public message: string = '';
   public messages: Array<String> = [];
-  public messageType: String = 'info';
+  public messageType = 'info';
   public buttons: Button[];
   public routeTo: String = '';
   public response: String = '';
   public callback: Function = null;
 
+  /**
+   * @param {MatDialogRef<DialogComponent>} messageBox
+   */
   constructor( public messageBox: MatDialogRef<DialogComponent> ) { }
 
   onClick( response: string ) {
-    debugger;
     this.response = response;
   }
 
@@ -34,7 +36,6 @@ export class DialogComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    debugger;
     if ( this.callback ) {
       this.callback(this.response);
     }

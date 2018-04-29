@@ -17,6 +17,9 @@ export class MenuComponent implements OnInit {
   constructor( private router: Router, loginService: LoginService, menuService: MenuService ) {
     this.loginService = loginService;
     this.menuService = menuService;
+    if ( this.loginService.isLogged() ) {
+      this.menuService.setMenu();
+    }
     if ( !this.loginService.isLogged() ) {
       this.router.navigate(['login']);
     }

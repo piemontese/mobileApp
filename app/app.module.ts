@@ -19,10 +19,12 @@ import { MatDialogModule } from '@angular/material';
 import { MatTooltipModule } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material';
 import { MatNativeDateModule } from '@angular/material';
+import { MatProgressBarModule } from '@angular/material';
 
   // Thirdy part modules
 import 'hammerjs';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import 'jquery';
 
   // App modules
 import { AppRoutingModule } from './app-routing.module';
@@ -42,6 +44,7 @@ import { DialogService } from './services/dialog.service';
 import { FullscreenDirective } from './directives/fullscreen.directive';
 import { FieldPipe } from './pipes/field.pipe';
 import { FieldStepPipe } from './pipes/field-step.pipe';
+import { DataTableComponent } from './components/commons/data-table/data-table.component';
 
 
 @NgModule({
@@ -57,6 +60,7 @@ import { FieldStepPipe } from './pipes/field-step.pipe';
     FullscreenDirective,
     FieldPipe,
     FieldStepPipe,
+    DataTableComponent,
   ],
   imports: [
       // Angular modules
@@ -78,6 +82,7 @@ import { FieldStepPipe } from './pipes/field-step.pipe';
     MatTooltipModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatProgressBarModule,
       // Thirdy part modules
     FlexLayoutModule,
       // App modules
