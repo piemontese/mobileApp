@@ -11,14 +11,17 @@ import { IMethodField } from '../models/method-field';
 @Injectable()
 export class LoginService {
   private data: UserData;
-  baseUrl = 'http://mnibm09.novellini.it:8066/sap/bc/webrfc';
+//  baseUrl = 'http://mnibm09.novellini.it:8066/sap/bc/webrfc';
+  baseUrl = 'http://127.0.0.1:8000/sap/bc/webrfc';
   _FUNCTION = 'Z_WRFC_INTERFACE';
   callback = 'JSONP_CALLBACK';
   method = 'Z_WRFC_GET_MENU';
   response: any;
   authentication = false;  // pass user and password to basic http authentication
-  sapUser = 'novedev';
-  sapPassword = 'init1234';
+//  sapUser = 'novedev';
+//  sapPassword = 'init1234';
+  sapUser = 'developer';
+  sapPassword = 'Ostrakon1!x';
   progress = false;
   public user: IUser;
   public logged: Boolean = false;
