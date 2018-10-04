@@ -13,15 +13,15 @@ export class LoginService {
   private data: UserData;
 //  baseUrl = 'http://mnibm09.novellini.it:8066/sap/bc/webrfc';
   baseUrl = 'http://127.0.0.1:8000/sap/bc/webrfc';
-  _FUNCTION = 'Z_WRFC_INTERFACE';
+  _FUNCTION = 'Z_PMT_WRFC_INTERFACE';
   callback = 'JSONP_CALLBACK';
-  method = 'Z_WRFC_GET_MENU';
+  method = 'Z_PMT_WRFC_GET_MENU';
   response: any;
   authentication = false;  // pass user and password to basic http authentication
 //  sapUser = 'novedev';
 //  sapPassword = 'init1234';
   sapUser = 'developer';
-  sapPassword = 'Ostrakon1!x';
+  sapPassword = 'Ostrakon1!';
   progress = false;
   public user: IUser;
   public logged: Boolean = false;
@@ -33,8 +33,10 @@ export class LoginService {
   ];
   public fieldType: IFieldType;
   public fields: IMethodField[] = [
-        { field: 'user', description: 'User', type: IFieldType.textbox, inputType: TextboxType.text, required: true, value: '', defaultValue: '', length: 20, data: null, minlength: '5', maxlength: '20', step: 1, valid: false },
-        { field: 'pwd', description: 'Password', type: IFieldType.textbox, inputType: TextboxType.password, required: true, value: '', defaultValue: '', length: 20, data: null, minlength: '5', maxlength: '20', step: 1, valid: false },
+        { field: 'user', description: 'User', type: IFieldType.textbox, inputType: TextboxType.text, required: true, value: '',
+          defaultValue: '', length: 20, data: null, minlength: '5', maxlength: '20', step: 1, valid: false },
+        { field: 'pwd', description: 'Password', type: IFieldType.textbox, inputType: TextboxType.password, required: true, value: '',
+          defaultValue: '', length: 20, data: null, minlength: '5', maxlength: '20', step: 1, valid: false },
       ];
 
   constructor( private router: Router, private dialogService: DialogService ) { }
