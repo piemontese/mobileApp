@@ -1,0 +1,32 @@
+<div fxLayout="column" fxLayout.xs="column"
+	fxLayoutAlign="center center">
+	<button mat-raised-button class="full-width menu-button"
+		[routerLink]="['/menu']">
+		<mat-icon>keyboard_backspacer</mat-icon>
+		Settings
+	</button>
+</div>
+
+
+
+
+<div class="full-height">
+	<div fxFlexFill fxLayout="column" fxLayoutAlign="center">
+		<mat-card class="action-card mat-elevation-z5"> <!--      <mat-card-header color="primary" fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">-->
+		<mat-card-title class="action-card-title">
+		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center">
+			Impostazioni</div>
+		</mat-card-title> <!--      </mat-card-header>--> <mat-card-content fxLayout="column"
+			fxLayout.xs="column" fxLayoutAlign="center"> <mat-form-field>
+		<mat-select class="field" placeholder="Sistema" value="Sviluppo">
+		<mat-option value="oprion">Sviluppo</mat-option> <mat-option
+			value="oprion">Test</mat-option> <mat-option value="oprion">Produzione</mat-option>
+		</mat-select> </mat-form-field> </mat-card-content> <mat-card-actions fxLayout="row" fxLayout.xs="row"
+			fxLayoutAlign="center center">
+		<button mat-raised-button [routerLink]="['/menu']">Cancel</button>
+		<button mat-raised-button color="primary" [routerLink]="['/menu']">Save</button>
+		</mat-card-actions> </mat-card>
+	</div>
+</div>
+
+

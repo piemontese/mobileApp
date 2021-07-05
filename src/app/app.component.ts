@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import * as screenfull from 'screenfull';
+
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +11,26 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  logo = './images/mobileApp.jpg';
+  loginService: LoginService;
+
+  constructor( private router: Router, loginService: LoginService ) {
+    this.loginService = loginService;
+  }
+
+  fullscreen() {
+//    let docElm = document.documentElement;
+//    docElm.webkitRequestFullscreen();
+    screenfull.toggle();
+//    screenfull.request();
+  }
+
+  ngOnInit() {
+//    debugger;
+//    let docElm = document.documentElement;
+//    docElm.webkitRequestFullscreen();
+//    screenfull.toggle();
+//    screenfull.request();
+  }
+
 }

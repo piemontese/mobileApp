@@ -1,0 +1,45 @@
+<div
+	*ngIf="menuService.currentAction && menuService.parent !== '' && menuService.currentMethod">
+	<div class="full-width" fxLayout="column" fxLayoutAlign="center center">
+		<div class="action-card-title" style="padding-bottom: 20px;">
+			{{menuService.currentAction.title}}</div>
+		<!--    <mat-horizontal-stepper [linear]="isLinear">-->
+		<div
+			*ngFor="let step of menuService.currentMethod.steps; let i=index;"
+			class="full-width">
+			<!--       <mat-step [stepControl]="step">-->
+
+			<app-form-field *ngFor="let field of getCurrentFields(i)"
+				fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center"
+				[field]="field"></app-form-field>
+
+			<br />
+			<div fxLayout="row" fxLayoutAlign="center center" class="form-field">
+				<div *ngIf="i>0 && i===currentStep" fxLayout="row"
+					fxLayoutAlign="start end"
+					style="margin-top: -20px; padding-bottom: 20px;">
+					<!--            <button mat-button matStepperPrevious><mat-icon>arrow_back</mat-icon></button>-->
+					<button mat-button (click)="currentStep = currentStep - 1">
+						<mat-icon>arrow_back</mat-icon>
+					</button>
+				</div>
+				<div *ngIf="i<menuService.currentSteps-1 && i===currentStep"
+					fxLayout="row" fxLayoutAlign="end end"
+					style="margin-top: -20px; padding-bottom: 20px;">
+					<!--            <button mat-button matStepperNext><mat-icon>arrow_forward</mat-icon></button>-->
+					<button mat-button (click)="currentStep = currentStep + 1">
+						<mat-icon>arrow_forward</mat-icon>
+					</button>
+				</div>
+			</div>
+			<div *ngIf="i===menuService.currentSteps-1 && i===currentStep"
+				fxLayout="row" fxLayoutAlign="end end" class="form-field">
+				<button mat-raised-button color="primary"
+					(click)="currentStep=0; execAction()">OK</button>
+			</div>
+			<!--        </mat-step>-->
+		</div>
+		<!--    </mat-horizontal-stepper>-->
+
+	</div>
+</div>

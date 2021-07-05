@@ -1,0 +1,60 @@
+<div fxLayout="column" fxLayout.xs="column"
+	fxLayoutAlign="center center">
+	<button mat-raised-button class="full-width menu-button"
+		*ngIf="menuService.parent===''">Menu</button>
+
+	<button mat-raised-button class="full-width menu-button"
+		*ngIf="menuService.parent!==''" (click)="menuService.goToPrevMenu()">
+		<mat-icon>keyboard_backspacer</mat-icon>
+		{{menuService.currentItem.description}}
+	</button>
+
+	<div class="full-width"
+		*ngFor="let item of menuService.getCurrentMenu()">
+		<button mat-raised-button color="primary"
+			class="full-width menu-button"
+			(click)="menuService.goToNextMenu(item)">{{item.description}}</button>
+	</div>
+</div>
+
+<div class="full-height"
+	*ngIf="menuService.currentAction && menuService.parent !== '' && menuService.currentMethod">
+	<div fxFlexFill fxLayout="column" fxLayoutAlign="center">
+		<mat-card class="action-card mat-elevation-z5"> <!--      <mat-card-header color="primary" fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center center">-->
+		<mat-card-title class="action-card-title">
+		<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center">
+			{{menuService.currentAction.title}}</div>
+		</mat-card-title> <!--      </mat-card-header>--> <mat-card-content fxLayout="column"
+			fxLayout.xs="column" fxLayoutAlign="center"> <mat-horizontal-stepper
+			[linear]="isLinear">
+		<div
+			*ngFor="let step of menuService.currentMethod.steps; let i=index;">
+			<mat-step [stepControl]="step">
+			<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center"
+				*ngFor="let field of menuService.currentMethod.fields">
+
+				<app-form-field *ngIf="field.step===i+1" [field]="field"></app-form-field>
+
+			</div>
+			<br />
+			<div *ngIf="i > 0">
+				<button mat-button matStepperPrevious>Back</button>
+			</div>
+			<div *ngIf="i < menuService.currentSteps-1">
+				<button mat-button matStepperNext>Next</button>
+			</div>
+			<div *ngIf="i === menuService.currentSteps-1">
+				<span class="right-spacer"></span>
+				<button mat-raised-button color="primary"
+					(click)="menuService.goToPrevMenu()">OK</button>
+			</div>
+			</mat-step>
+		</div>
+		</mat-horizontal-stepper> </mat-card-content> <!--
+      <mat-card-actions fxLayout="row" fxLayout.xs="row" fxLayoutAlign="center center">
+        <button mat-button>OK</button>
+        <button mat-button>Cancel</button>
+      </mat-card-actions>      
+--> </mat-card>
+	</div>
+</div>

@@ -1,6 +1,6 @@
 # MobileApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.3.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
 ## Development server
 
@@ -25,3 +25,18 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Update Angular Cli
+
+Delete node_modules and dist directory
+
+Install modules
+
+npm install --save-dev @angular/cli@latest
+npm install --save @angular-devkit/build-angular @angular/material @angular/cdk hammerjs @angular/flex-layout jquery material-design-icons screenfull rxjs-compat 
+npm install --save-dev @types/jquery @compodoc/compodoc
+
+
+## MobileApp demo
+
+[MobileApp](https://piemontese.github.io/mobileApp/)

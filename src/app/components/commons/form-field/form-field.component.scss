@@ -1,0 +1,33 @@
+.full-width {
+  display: block;
+  width: 100%;
+  margin-bottom: 2px;
+}
+
+.full-height { 
+  margin-top: 10px;
+  height: 80%; 
+  flex: auto;
+}
+
+.action-card {
+  min-width: 90%;
+  max-width: 90%;
+  min-height: 75%;
+  max-height: 75%;
+}
+
+.action-card-title {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 25px;
+}
+
+.form-field {
+  min-width: 95%;
+  max-width: 95%;
+  width: 95%;
+  font-size: 18px;
+}
+
+
